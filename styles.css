@@ -1,6 +1,12 @@
 html{
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
-}
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+ } 
 
 nav ul {
     list-style-type: none;
@@ -22,7 +28,41 @@ nav ul {
     text-decoration: none;
   }
   
-  /* Change the link color to #111 (black) on hover */
+  
   li a:hover {
     background-color: #232121;
+  }
+
+  .info-card {
+    display: none;
+    position: static; /* Changed from absolute to static */
+    width: 200px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+li:hover .info-card {
+    display: block;
+}
+  header h1 {
+    text-align: Left;
+    left: 5%;
+    padding: 10px;
+  }
+  main {
+    margin: 10px;
+    padding: 30px;
+    background-color: #f4f4f4;
+  }
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    margin: 0px;;
+    position: relative;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
   }
