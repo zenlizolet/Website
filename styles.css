@@ -1,5 +1,6 @@
 html{
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
 }
 
 nav ul {
@@ -25,4 +26,30 @@ nav ul {
   /* Change the link color to #111 (black) on hover */
   li a:hover {
     background-color: #232121;
+  }
+  body.authors-page{
+    background-image:url('pictures\authorpage\background1.jpg') ;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+  }
+  
+  .biography {
+    margin-left: 0px;
+    padding-left: 0px;
+    border: 1px solid red; /*moet weg*/
+
+  }
+
+  .picture-author{
+    float: right;
+    width: 30%;
+    text-decoration: solid;
+  }
+  .picture-author img{
+    width: 100%;
+    height: auto;
+
+
   }
