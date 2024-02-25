@@ -69,7 +69,7 @@ button {
 
 footer {
   background-color: #191512;
-  color: white;
+  color: #988e8c;
   text-align: center;
   bottom: 0px;
   box-sizing: border-box;
@@ -193,7 +193,8 @@ li:hover .book-content {
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center; 
-  background-position: 0 20%;
+  background-position: 0 35%;
+  background-attachment: fixed;
 }
 /*HIER MOET NOG WAT KOMEN
 
@@ -209,6 +210,7 @@ TODO
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center; 
+  background-attachment: fixed;
 }
 
 #continents-container{
@@ -249,6 +251,8 @@ TODO
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center; 
+  background-attachment: fixed;
+  background-position: 0% 35% 
 }
 .grid-container{
     display: grid;
@@ -306,6 +310,7 @@ TODO
   background-size: 100%; 
   background-repeat: no-repeat;
   background-position: center; 
+  background-attachment: fixed;
 }
 
 /*HIER MOET NOG WAT KOMEN
