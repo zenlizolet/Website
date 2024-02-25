@@ -214,34 +214,63 @@ TODO
   background-attachment: fixed;
 }
 
-#continents-container{
-  border:2px solid blue;
+#continents{
+  border:2px dashed #504017;
+  background-color: #1a1511;
+  margin-left: auto;
+  margin-right:auto;
+  align-self: center;
+  width:80% ;
+  border-radius: 10px ;
   position: relative;
-  padding: 45px;
 }
 
 .regions{
-  margin: 10px;
-  padding: 20px;
-  background-color: #f4f4f4;
-  border: 1px solid red;
+  margin-left: 45px;
+  width: max-content;
   border-radius: 10px;
   box-sizing: border-box;
 }
 
+.regions a{
+  text-decoration: none;
+  color: #988e8c
+}
+
 .info-card{
   position:absolute;
-  top:10%;
+  top: 10%;
   right:10%;
-  width: 40%;
-  background-color: #f4f4f4;
-  border: 1px solid red;
-  height: 80%;
+  width: 45%;
+  background-color: #221c18;
+  border: 3px solid #342c26;
+  height: 65%;
   display: none;
+  padding: 30px;
+  border-radius: 10px;
 }
 
 .info-card:target {
   display: block; 
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.introtekst{
+  flex: 1;
+  margin-right: 20px;
+}
+
+#map {
+  flex: 1;
+  height: auto;
+}
+
+#map img {
+  width: 100%;
+  height: auto;
 }
 
 
@@ -327,4 +356,22 @@ TODO
   .grid-container {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
+
+  main{
+    width: 90%;
+  }
+
+  .container {
+    display: block;
+  }
+  
+  .info-card{
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+
+
 }
