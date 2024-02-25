@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sequels</title>
+    <title>Setting</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body id= "setting-body">
@@ -21,21 +21,38 @@
 
     <main>
         <h1>Setting</h1>
-        <section class = "intro">
-            <h2>About the Setting</h2>
-            <p> Game of Thrones, based on the book series "A Song of Ice and Fire" by George R.R. Martin, is set in a medieval-inspired world primarily on the continents of Westeros and Essos. <br>
-                The story is set in a time period reminiscent of the Middle Ages, featuring a blend of fantasy elements such as dragons, magic, and supernatural beings, alongside realistic political intrigue, warfare, and societal structures. <br>
-                Westeros, where much of the action takes place, is divided into several regions, each ruled by noble houses vying for power and control. <br>
-                The series begins at a time of relative stability, following the long summer season, but tensions rise rapidly as various factions vie for control of the Iron Throne, the seat of power in the Seven Kingdoms.</p>
-        </section>
+        <h2>About the Setting</h2>
+        <section class="container">
+            
+            <section class = "introtekst">
+                
+                <p> Game of Thrones, based on the book series "A Song of Ice and Fire" by George R.R. Martin, is set in a medieval-inspired world primarily on the continents of Westeros and Essos. <br>
+                    The story is set in a time period reminiscent of the Middle Ages, featuring a blend of fantasy elements such as dragons, magic, and supernatural beings, alongside realistic political intrigue, warfare, and societal structures. <br>
+                    Westeros, where much of the action takes place, is divided into several regions, each ruled by noble houses vying for power and control. <br>
+                    The series begins at a time of relative stability, following the long summer season, but tensions rise rapidly as various factions vie for control of the Iron Throne, the seat of power in the Seven Kingdoms.</p>
+            </section>
 
+            <section id="map">
+                <figure>
+                <a href="images/the_known_world.jpg" >
+                    <img src="images/the_known_world.jpg" alt="map of the known world" style="width:100%; height: auto;">
+                </a>
+                <figcaption><em>Map of the Known World, click for a more detailed view</em></figcaption>
+                </figure>
+            </section>
+        </section>
+        
         <hr class="dashed">
 
         <section id = continents-container>
-            <div class="continents">
                 <h2>Continents</h2>
-                <h2>Westeros</h2>
+                <p>
+                    As discussed above, the story is primarily set on the continents of Westeros and Essos. <br>
+                    We divided the most important regions of these continents into the following sections. To read more about the regions, click on the region you would like to know more about.
+                </p>
+                <section id="continents">
                     <section class="regions">
+                        <h2>Westeros</h2>
                         <h3>Regions</h3>
                             <ul>
                                 <li><a href="#info1">Beyond the wall</a></li>
@@ -62,10 +79,9 @@
                             <div id="info10" class="info-card">Additional information about Dorne</div>
                     </section>
                 </div>
-            </div>
-            <div class="continents">
-                <h2>Essos</h2>
+
                 <section class="regions">
+                    <h2>Essos</h2>
                     <h3>Regions</h3>
                     <ul>
                         <li><a href="#info11">Free Cities</a></li>
@@ -83,17 +99,9 @@
                     <div id="info15" class="info-card">Additional information about Qarth</div>
                     <div id="info16" class="info-card">Additional information about Asshai</div>
                 </section>
-            </div>
+                </section>
+                   
         </section>
-        
-        <hr class="dashed">
-
-        <section id="map">
-            <a href="images/the_known_world.jpg" target="_blank">
-                <img src="images/the_known_world.jpg" alt="map of the known world" style="width: 50%; height: auto;">
-            </a>
-        </section>
-
     </main>
 
     <footer>
