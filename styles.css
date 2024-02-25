@@ -1,32 +1,80 @@
 /*general css*/
 html {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #988e8c;
  }
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    position:relative;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display:flex;
+  flex-direction: column;
+  position:relative;
 } 
 header h1 {
   text-align: Left;
-  padding: 10px;
 }
+
+h1 {
+  padding-left: 25px;
+  margin: 0%;
+  font-size: xx-large;
+}
+
+h2 {
+  padding-left: 25px;
+
+  font-size: x-large;
+}
+
+p {
+  padding-left: 45px;
+}
+
+hr.dashed {
+  border: 2px dashed #342c26;
+}
+main a {
+  color: #a18431;
+}
+
 main {
+  padding: 15px;
   margin: 10px;
-  padding: 30px;
-  background-color: #f4f4f4;
+  width:   60%;
+  align-self: center;
+  box-shadow: 0 0 0 10px #221c18;
+  flex: 1;
+  background-color: #221c18;
+  border: 6px double #342c26;
+  box-sizing: border-box;
 }
+input {
+  background-color: #342c26;
+}
+
+textarea {
+  background-color: #342c26;
+  padding: 1px 1px;
+}
+button {
+  background-color: #342c26;
+  color: #988e8c;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 footer {
-  background-color: #333;
+  background-color: #191512;
   color: white;
   text-align: center;
-  padding: 5px;
-  margin: 0px;;
-  position: relative;
-  bottom: 0;
+  bottom: 0px;
   box-sizing: border-box;
   width: 100%;
+  height:5%;
 }
 
 /*style for the navigation bar*/
@@ -35,7 +83,7 @@ nav ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #191512;
   }
   
 nav li {
@@ -44,34 +92,44 @@ nav li {
 
 nav li a {
   display: block;
-  color: white;
+  color: #988e8c;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  
+}
+nav li a:hover {
+  background-color: #250d08;
 }
 
-
-nav li a:hover {
-  background-color: #232121;
+/*css for the body*/
+#index-body{
+  background-image: url('images/the_wall.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center; 
 }
 
 /*css for author*/
+#author-body{
+  background-image: url('images/gods_wood.jpg'); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+}
 
-.authors-page h1{
-  color:#988e8c; 
+#author-body h1{
   text-align: center;
 }
+
 .Biography {
   background-color: #221c18;
-  color: #988e8c;
   padding: 35px;
   border-radius: 8%;
 
 }
 .page-content {
-  background-color: #221c18;
-  color: #988e8c;
-  
+  background-color: #221c18;  
 }
 
 .page-content img {
@@ -85,7 +143,6 @@ nav li a:hover {
 }
 .book {
   background-color: #221c18;
-  color: #988e8c;
   margin-top: 10px;
   padding: 35px;
   border-radius: 10%;
@@ -131,6 +188,13 @@ li:hover .book-content {
 
 
 /*css for the review page*/
+#reviews-body{
+  background-image: url('images/riverlands.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-position: 0 20%;
+}
 /*HIER MOET NOG WAT KOMEN
 
 TODO
@@ -140,9 +204,17 @@ TODO
 
 
 /*css for the setting page*/
+#setting-body{
+  background-image: url('images/kings_landing.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center; 
+}
+
 #continents-container{
   border:2px solid blue;
   position: relative;
+  padding: 45px;
 }
 
 .regions{
@@ -156,12 +228,12 @@ TODO
 
 .info-card{
   position:absolute;
-  top:0;
-  right:0;
+  top:10%;
+  right:10%;
+  width: 40%;
   background-color: #f4f4f4;
   border: 1px solid red;
-  width: 50%;
-  height: 100%;
+  height: 80%;
   display: none;
 }
 
@@ -171,16 +243,22 @@ TODO
 
 
 /*css for houses page*/
+
+#houses-body{
+  background-image: url('images/essos.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center; 
+}
 .grid-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-content: center;
     padding: 10px;
     margin: 10px;
-    background-color:#221c18;
-    border: 1px solid #ccc;
-    color: #988e8c;
-
+    background-color:#1a1511;
+    border-radius:9px;
+    border: 2px dashed #504017;
 }
 
 .grid-container h1 {
@@ -192,7 +270,8 @@ TODO
   text-align: left;
   margin: 10px;
   background-color: #221c18;
-  border: 1px solid #ccc;
+  border: 3px solid #342c26;
+  border-radius:7px;
   min-height: 300px;
   min-width: 200px;
 }
@@ -222,8 +301,14 @@ TODO
 
 
 /*css for the sequels-page*/
-/*HIER MOET NOG WAT KOMEN
+#sequels-body{
+  background-image: url('images/braavos.png');
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-position: center; 
+}
 
+/*HIER MOET NOG WAT KOMEN
 TODO
 
 
