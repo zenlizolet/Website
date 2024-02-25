@@ -1,21 +1,43 @@
+/*general css*/
 html {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ }
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    position:relative;
+} 
+header h1 {
+  text-align: Left;
+  padding: 10px;
+}
+main {
+  margin: 10px;
+  padding: 30px;
   background-color: #f4f4f4;
 }
-
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+footer {
   background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  margin: 0px;;
+  position: relative;
+  bottom: 0;
+  box-sizing: border-box;
+  width: 100%;
 }
 
+/*style for the navigation bar*/
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
 nav li {
   float: left;
 }
@@ -29,48 +51,9 @@ nav li a {
 }
 
 
-li a:hover {
+nav li a:hover {
   background-color: #232121;
 }
-
-.info-card {
-  display: none;
-  position: static;
-  /* Changed from absolute to static */
-  width: 200px;
-  padding: 10px;
-  background-color: white;
-  border: 1px solid #ccc;
-}
-
-li:hover .info-card {
-  display: block;
-}
-
-header h1 {
-  text-align: Left;
-  left: 5%;
-  padding: 10px;
-}
-
-main {
-  margin: 10px;
-  padding: 30px;
-  background-color: #f4f4f4;
-}
-
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 5px;
-  margin: 0px;
-  position: relative;
-  bottom: 0;
-  box-sizing: border-box;
-  width: 100%;
-}
-
 
 /*css for author*/
 
@@ -147,19 +130,56 @@ li:hover .book-content {
 }
 
 
+/*css for the review page*/
+/*HIER MOET NOG WAT KOMEN
+
+TODO
 
 
+*/
 
-/*css for houses*/
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  justify-content: center;
-  padding: 10px;
+
+/*css for the setting page*/
+#continents-container{
+  border:2px solid blue;
+  position: relative;
+}
+
+.regions{
   margin: 10px;
-  background-color: #221c18;
-  border: 1px solid #ccc;
-  color: #988e8c;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid red;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.info-card{
+  position:absolute;
+  top:0;
+  right:0;
+  background-color: #f4f4f4;
+  border: 1px solid red;
+  width: 50%;
+  height: 100%;
+  display: none;
+}
+
+.info-card:target {
+  display: block; 
+}
+
+
+/*css for houses page*/
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    justify-content: center;
+    padding: 10px;
+    margin: 10px;
+    background-color:#221c18;
+    border: 1px solid #ccc;
+    color: #988e8c;
 
 }
 
@@ -200,7 +220,17 @@ li:hover .book-content {
   align-self: flex-end;
 }
 
-/* Responsive voor mobiele weergave */
+
+/*css for the sequels-page*/
+/*HIER MOET NOG WAT KOMEN
+
+TODO
+
+
+*/
+
+
+/* Responsive css */
 
 @media (max-width: 700px) {
   .grid-container {
