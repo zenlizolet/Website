@@ -349,6 +349,10 @@ TODO
   flex-wrap: wrap;
 }
 
+.book-name{
+  margin-left: 20px;
+}
+
 
 .Summary{
   flex:1;
