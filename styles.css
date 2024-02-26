@@ -27,6 +27,11 @@ h2 {
   font-size: x-large;
 }
 
+h4 {
+  padding-left: 25px;
+  font-size: small;
+}
+
 p {
   padding-left: 45px;
 }
@@ -199,6 +204,14 @@ TODO
   width:80% ;
   border-radius: 10px ;
   position: relative;
+}
+
+#continents-container strong{
+  color:#a57d71;
+}
+
+#continents-container h2{
+  padding-left: 0;
 }
 
 .regions{
