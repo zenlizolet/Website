@@ -130,11 +130,11 @@ nav li a:hover {
 }
 .page-content {
   background-color: #221c18;  
-}
+}   
 
 .page-content img {
   float: left;
-  padding: 20px;
+  padding-right: 10px;
 }
 
 .page-content a{
@@ -144,38 +144,12 @@ nav li a:hover {
 .book {
   background-color: #221c18;
   margin-top: 10px;
-  padding: 35px;
   border-radius: 10%;
 }
 
 .book a{
   color: #a18431  ;
 
-}
-.book-content p {
-  margin-left: 10px;
- 
-}
-
-
-li a:hover {
-  background-color: #232121;
-}
-
-.book-content {
-  display: none;
-  position: static;
-  /* Changed from absolute to static */
-  background-color:#988e8c
-
-}
-
-li:hover .book-content {
-  display: flex;
-  float: left;
-  padding: 10px;
-  background-color: #221c18;
-  color: #988e8c;
 }
 
 .contact{
@@ -312,6 +286,23 @@ TODO
   background-position: center; 
   background-attachment: fixed;
 }
+
+.books-in-order{
+  padding-left: 30px;
+}
+.books-in-order img{
+  position:static;
+  float: left;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+
+.Summary{
+  display:block;
+  flex-direction: row;
+}
+
 
 /*HIER MOET NOG WAT KOMEN
 TODO
