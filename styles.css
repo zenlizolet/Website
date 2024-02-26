@@ -310,58 +310,48 @@ TODO
 
 /*css for the sequels-page*/
 #sequels-body{
+  background-image: url('images/braavos.png');
   background-size: 100%; 
   background-repeat: no-repeat;
   background-position: center; 
   background-attachment: fixed;
 }
 
-.books-in-order{
-  padding-left: 30px;
-}
+
 .books-in-order img{
-  position:static;
   float: left;
   padding: 10px;
-  margin-right: 10px;
 }
 
-.books1-Container{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.books2-Container{
-  display: flex;
-  flex-wrap: wrap;
-}
-.books3-Container{
-  display: flex;
-  flex-wrap: wrap;
-}
-.books4-Container{
-  display: flex;
-  flex-wrap: wrap;
-}
-.books5-Container{
-  display: flex;
-  flex-wrap: wrap;
-}
-.books6Container{
+.book1-container{
   display: flex;
   flex-wrap: wrap;
 }
 
-
-.book-name{
-  flex:1;
-  height: auto;
+.book2-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.book3-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.book4-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.book5-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.book6-container{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 
 .Summary{
   flex:1;
-  margin-left: 20px;
 }
 
 
