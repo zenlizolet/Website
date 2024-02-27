@@ -127,7 +127,7 @@ td{
 table{
   position: relative;
   border-collapse: collapse;
-  width: 100%;
+  width: auto;
   margin-left:45px;
   background-color: #221c18;
   border: 2px solid #342c26;
