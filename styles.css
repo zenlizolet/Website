@@ -10,6 +10,7 @@ body {
   display:flex;
   flex-direction: column;
   position:relative;
+  min-height: 100vh;
 } 
 header h1 {
   text-align: Left;
@@ -115,6 +116,31 @@ nav li a:hover {
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center; 
+}
+
+td{
+  border: 1px solid #342c26; 
+  padding: 6px;
+
+}
+
+table{
+  position: relative;
+  border-collapse: collapse;
+  width: 100%;
+  margin-left:45px;
+  background-color: #221c18;
+  border: 2px solid #342c26;
+  
+}
+
+th{
+  padding: 8px;
+  background-color: #191512;
+}
+
+tr:nth-child(even){
+  background-color: #1a1511;
 }
 
 /*css for author*/
@@ -372,14 +398,6 @@ TODO
 .Summary{
   flex:1;
 }
-
-
-/*HIER MOET NOG WAT KOMEN
-TODO
-
-
-*/
-
 
 /* Responsive css */
 
