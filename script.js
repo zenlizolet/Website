@@ -132,6 +132,9 @@ window.onload = function() {
     console.log("The page has loaded!");
 
 
+
+
+
   // Create elements for the book's information
 
   let titleElement = document.createElement('h1');
@@ -155,7 +158,8 @@ window.onload = function() {
   let plotElement = document.createElement('p');
   plotElement.textContent = `Plot: ${book.plot}`;
 
-  let mainElement = document.createElement('main');
+    // Append these elements to the main element
+    let mainElement = document.querySelector('main');
     mainElement.appendChild(titleElement);
     mainElement.appendChild(genreElement);
     mainElement.appendChild(yearElement);
@@ -163,6 +167,4 @@ window.onload = function() {
     mainElement.appendChild(publisherElement);
     mainElement.appendChild(coverElement);
     mainElement.appendChild(plotElement);
-
-document.body.appendChild(mainElement);
 }
