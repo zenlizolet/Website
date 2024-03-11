@@ -142,13 +142,20 @@ let book = new Book([author], 1996, "A Game of Thrones", "Fantasy", publisher, "
     "\n" +
     "And so, dear reader, whether you stand in the icy winds of the North or bask in the warmth of King’s Landing, remember that every choice echoes through time, and the game of thrones plays on, heedless of mortal hearts");
 
+let count = 0;
+function calculate() {
+    let counter = document.getElementById('counter');
+    counter.textContent = `King Joffrey has been killed ${count} times`;
+    count++;
+    console.log('yooooooooo');
+}
 
+let mainElement = document.querySelector('main');
 // This function will run when the page loads
 window.onload = function () {
     console.log("The page has loaded!");
 
     // Create elements for the book's information
-
     let titleElement = document.createElement('h1');
     titleElement.textContent = book.title;
 
@@ -171,7 +178,7 @@ window.onload = function () {
     plotElement.textContent = `${book.plot}`;
 
     // Append these elements to the main element
-    let mainElement = document.querySelector('main');
+
     mainElement.appendChild(titleElement);
     mainElement.appendChild(genreElement);
     mainElement.appendChild(yearElement);
