@@ -131,6 +131,8 @@ let book = new Book([author], 1996, "A Game of Thrones", "Fantasy", publisher, "
 window.onload = function() {
     console.log("The page has loaded!");
 
+   
+
 
 
 
