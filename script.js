@@ -130,43 +130,78 @@ let book = new Book([author], 1996, "A Game of Thrones", "Fantasy", publisher, "
 // This function will run when the page loads
 window.onload = function() {
     console.log("The page has loaded!");
-
-   
-
-
-
-
-
-  // Create elements for the book's information
-
-  let titleElement = document.createElement('h1');
-  titleElement.textContent = book.title;
-
-  let genreElement = document.createElement('p');
-  genreElement.textContent = `Genre: ${book.genre}`;
-
-  let yearElement = document.createElement('p');
-  yearElement.textContent = `Year: ${book.year}`;
-
-  let authorElement = document.createElement('p');
-  authorElement.textContent = `Author: ${author.name}`;
-
-  let publisherElement = document.createElement('p');
-  publisherElement.textContent = `Publisher: ${publisher.name}`;
-
-  let coverElement = document.createElement('img');
-  coverElement.src = book.cover;
-
-  let plotElement = document.createElement('p');
-  plotElement.textContent = `Plot: ${book.plot}`;
-
-    // Append these elements to the main element
-    let mainElement = document.querySelector('main');
-    mainElement.appendChild(titleElement);
-    mainElement.appendChild(genreElement);
-    mainElement.appendChild(yearElement);
-    mainElement.appendChild(authorElement);
-    mainElement.appendChild(publisherElement);
-    mainElement.appendChild(coverElement);
-    mainElement.appendChild(plotElement);
+    url = window.location.href;
+    createNav();
+    createFooter();
+    if (url.endsWith('info.html')) {
+      createInfoPage();
+    }
 }
+
+
+
+function createNav(){
+  var nav = document.createElement('nav');
+  var ul = document.createElement('ul');
+  var pages = ['Homepage', 'Author', 'Reviews', 'Setting', 'Houses', 'Sequels', 'Dynamic Page'];
+  var links = ['index.html', 'author.html', 'reviews.html', 'setting.html', 'houses.html', 'sequels.html', 'info.html'];
+
+  for (var i = 0; i < pages.length; i++) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.textContent = pages[i];
+      a.href = links[i];
+      li.appendChild(a);
+      ul.appendChild(li);
+  }
+
+  nav.appendChild(ul);
+  var header = document.querySelector('header');
+  header.appendChild(nav); 
+};
+
+function createFooter(){
+  var footer = document.createElement('footer');
+  var p = document.createElement('p');
+  p.textContent = String.fromCharCode(169) + ' 2024 ASOIAF, Alexander Le, Jieni Ding, Liselot Ankone. All rights reserved.';
+  footer.appendChild(p);
+  var body = document.querySelector('body');
+  body.appendChild(footer);
+};
+  
+
+    
+function createInfoPage(){
+// Create elements for the book's information
+let titleElement = document.createElement('h1');
+titleElement.textContent = book.title;
+
+let genreElement = document.createElement('p');
+genreElement.textContent = `Genre: ${book.genre}`;
+
+let yearElement = document.createElement('p');
+yearElement.textContent = `Year: ${book.year}`;
+
+let authorElement = document.createElement('p');
+authorElement.textContent = `Author: ${author.name}`;
+
+let publisherElement = document.createElement('p');
+publisherElement.textContent = `Publisher: ${publisher.name}`;
+
+let coverElement = document.createElement('img');
+coverElement.src = book.cover;
+
+let plotElement = document.createElement('p');
+plotElement.textContent = `Plot: ${book.plot}`;
+
+  // Append these elements to the main element
+  let mainElement = document.querySelector('main');
+  mainElement.appendChild(titleElement);
+  mainElement.appendChild(genreElement);
+  mainElement.appendChild(yearElement);
+  mainElement.appendChild(authorElement);
+  mainElement.appendChild(publisherElement);
+  mainElement.appendChild(coverElement);
+  mainElement.appendChild(plotElement);
+
+};
