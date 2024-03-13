@@ -154,10 +154,11 @@ function createNav(){
       li.appendChild(a);
       ul.appendChild(li);
   }
-
+  
   nav.appendChild(ul);
   var header = document.querySelector('header');
   header.appendChild(nav); 
+
 };
 
 function createFooter(){
