@@ -291,7 +291,7 @@ tr:nth-child(even){
   background-position: 0% 35% 
 }
 
-.grid-container{
+.grid__container{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
@@ -302,11 +302,11 @@ tr:nth-child(even){
   border: 2px dashed #504017;
 }
 
-.grid-container h1 {
+.grid__container h1 {
   text-align: center;
 }
 
-.grid-item {
+.grid__item {
   padding: 20px;
   text-align: left;
   margin: 10px;
@@ -317,14 +317,15 @@ tr:nth-child(even){
   min-width: 200px;
 }
 
-.grid-item-content {
+.grid__item--content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   height: 100%;
 }
 
-.grid-item img {
+.grid__item img {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -332,7 +333,7 @@ tr:nth-child(even){
   width: 50%;
 }
 
-.general-info {
+.general__info {
   align-self: flex-start;
 }
 
@@ -375,7 +376,7 @@ tr:nth-child(even){
   justify-content: space-between;
 }
 
-.book-name{
+.book__name{
   align-self: center;
   margin-left: 20px;
 }
