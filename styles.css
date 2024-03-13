@@ -238,6 +238,7 @@ tr:nth-child(even){
   width: max-content;
   border-radius: 10px;
   box-sizing: border-box;
+  width:80%;
 }
 
 .regions a{
@@ -247,11 +248,10 @@ tr:nth-child(even){
 
 .infocard{
   position:relative;
-  width: 20%;
+  display: none;
   height: auto;
   background-color: #221c18;
   border: 3px solid #342c26;
-  display: none;
   padding: 30px;
   border-radius: 10px;
 }
@@ -401,13 +401,13 @@ tr:nth-child(even){
 
   #continents__container strong{
     color:#a57d71;
-    display: visible;
+    display: block;
     visibility: visible;
   }
 
   .infocard{
     height: auto;
-    display: block;
+    display: none;
     overflow: auto;
   }
 }
