@@ -388,7 +388,6 @@ tr:nth-child(even){
 /*css for the infopage*/
 #info__body{
   background-image: url('images/dragon_stone.jpg');
-  background-size: 100%; 
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; 
@@ -425,6 +424,11 @@ tr:nth-child(even){
   justify-content: space-between;
   border-radius:7px;
   min-width: 30%;
+}
+
+#deathGif__container img{
+  width:100%;
+  height:auto;
 }
 
 

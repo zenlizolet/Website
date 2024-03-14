@@ -225,6 +225,7 @@ function createInfoPage(){
   // Create a new button element
   let killButton = document.createElement('button');
   killButton.id = 'calc';
+  killButton.title = 'Click to kill King Joffrey'
   killButton.textContent = 'Poison King Joffrey';
   killButton.addEventListener('click', calculate);
 
@@ -237,7 +238,16 @@ function createInfoPage(){
     counter.textContent = `King Joffrey has been killed ${count} times`;
     count++;
 
+    let deathContainer = document.createElement('div');
+    deathContainer.setAttribute('id', "deathGif__container");
+
+    deathContainer.appendChild(deathGif);
+    mainElement.appendChild(deathContainer);
+
     deathGif.src = 'https://media.giphy.com/media/xT1XGMGzPmRZIEA3q8/giphy.gif';
+    deathGif.alt = 'King Joffrey getting poisoned.';
+    deathGif.title = "Poisoned by gangster grandma.";
+    deathGif.setAttribute('id', "deathGif");
   }
 
   mainElement.appendChild(dashedLine);
