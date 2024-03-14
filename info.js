@@ -120,6 +120,13 @@ class Person {
       return this.#plot;
     }
   }
+const backgroundCSS = css => {
+  let bgCSS = document.createElement('style');
+  bgCSS.innerHTML = css;
+  document.head.appendChild(bgCSS);
+  return bgCSS;
+}
+backgroundCSS('body {background-image: url("/images/GOT.png");  background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: 0 35%}');
 
 function createInfoPage(){
   let author = new Author("George R. R. Martin", 1948, ["A Game of Thrones"], "https://en.wikipedia.org/wiki/George_R._R._Martin");
