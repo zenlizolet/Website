@@ -341,16 +341,16 @@ tr:nth-child(even){
   align-self: flex-end;
 }
 
-/*css for the sequels-page*/
+/*css for the sequels-page!*/
 #sequels__body{
   background-image: url('images/braavos.png');
-  background-size: 100%; 
   background-repeat: no-repeat;
-  background-position: center; 
   background-attachment: fixed;
+  background-size: cover;
+  background-position: 0 35%
 }
 
-.books-in-order img{
+.books-in-order img{  
   float: left;
   padding: 10px;
   align-items: stretch;
@@ -387,6 +387,49 @@ tr:nth-child(even){
   overflow: auto;
 }
 
+/*css for the infopage*/
+#info__body{
+  background-image: url('images/dragon_stone.jpg');
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
+  background-attachment: fixed;
+}
+#info__container{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: space-between;
+  border-radius:7px;
+}
+
+#info__cover__container{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 10px;
+  border-radius:7px;
+  height: 300px;
+}
+
+#info__cover__container img {
+  height: 100%;
+  width: auto;
+}
+
+
+#info__text__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius:7px;
+  min-width: 30%;
+}
+
+
 /* Responsive css */
 
 @media (min-width: 700px) {
@@ -409,5 +452,27 @@ tr:nth-child(even){
     height: auto;
     display: block;
     overflow: auto;
+  }
+
+  #info__cover__container{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+    height: 300px;
+  }
+
+  #info__text__container {
+    margin-left: 30px;
+    min-width: 300px;
+  }
+}
+
+@media (min-width:1024px){
+  #info__container{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-between;
   }
 }
