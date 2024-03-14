@@ -103,7 +103,7 @@ function createFooter() {
 //This function creates a menu with all the different elements on the page
 function createMenu() {
   const elementoptions = document.getElementById("element-select");
-  const elements = document.querySelectorAll('body, header, footer, aside, article, section, nav');
+  const elements = document.querySelectorAll(' body, header, footer, aside, article, section, nav');
   const uniqueElements = [];
 
   for (let i = 0; i < elements.length; ++i) {
@@ -145,7 +145,6 @@ function changeStyleOfElement() {
 //This function changes the currently visible property to change
 function changeStyleChoice(){
 
-  console.log("called");
   if(document.getElementById("style-select").value =="color")
   {
       document.getElementById("fontsizechoice").hidden = true;
@@ -158,11 +157,16 @@ function changeStyleChoice(){
   }
 }
 
+function check()
+{
+  console.log("hello");
+}
+
 window.addEventListener('load', createMenu, false);
 
 var styleButton = document.getElementById('style-change-button');
-styleButton.addEventListener('click', changeStyleOfElement, false);
+styleButton.addEventListener('click', check, false);
 
 
 var styleSelector = document.getElementById('style-select');
-styleSelector.addEventListener('change', changeStyleChoice, false);
+styleSelector.addEventListener('change', check, false);
