@@ -140,7 +140,7 @@ function changeElement() {
     }
 }
 
-//This function changes the currently visible property to change
+//This function changes the currently visible property it needs to change
 function changeStyle() {
     const selectedStyle = document.getElementById("style-select").value;
 
