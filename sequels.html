@@ -3,70 +3,58 @@
 
 <head>
     <title>Sequels</title>
-    <link rel="stylesheet" href="styles.css">
-        <meta name="description" content="Sequels of a Book - Explore the thrilling sequels of a popular book series.">
-        <meta name="keywords" content="sequels, book sequels, book series, fantasy books,A Game Of Thrones, A Clash Of Kings, A Storm Of Swords, A Feast Of Crows">
-        <meta name="author" content="Jieni, Liselot">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-
-<body id="sequels-body">
-    <header>
-
-        <nav>
-            <ul>
-                <li><a href="index.html">Homepage</a></li>
-                <li><a href="author.html">Author</a></li>
-                <li><a href="reviews.html">Reviews</a></li>
-                <li><a href="setting.html">Setting</a></li>
-                <li><a href="houses.html">Houses</a></li>
-                <li><a href="sequels.html">Sequels</a></li>
-                <li><a href="info.html">Dynamic Page</a></li>
-            </ul>
-        </nav>
-
-    </header>
-
-    <!-- all the summaries are from amazon-->
-    <main>
-        <h1>Sequels of a Book</h1>
-        <section>
-            <h2>About the Series</h2>
-            <p>Long ago, in a time forgotten, a preternatural event threw the seasons out of balance. In a land where
-                summers can last decades and winters a lifetime, trouble is brewing. The cold is returning, and in the
-                frozen wastes to the north of Winterfell, sinister forces are massing beyond the kingdom’s protective
-                Wall. To the south, the king’s powers are failing—his most trusted adviser dead under mysterious
-                circumstances and his enemies emerging from the shadows of the throne. At the center of the conflict lie
-                the Starks of Winterfell, a family as harsh and unyielding as the frozen land they were born to. Now
-                Lord Eddard Stark is reluctantly summoned to serve as the king’s new Hand, an appointment that threatens
-                to sunder not only his family but the kingdom itself.
-
-                <ul>
-                    <li><a href="#book1">Book 1: A Game of Thrones </a></li>
-                    <li><a href="#book2">Book 2: A Clash of Kings</a></li>
-                    <li><a href="#book3">Book 3: A Storm of Swords</a> </li>
-                    <li><a href="#book4">Book 4: A Feast for Crows</a></li>
-                    <li><a href="#book5">Book 5: A Dance with Dragons</a> </li>
-                    <li><a href="#book6">Book 6: The Winds of Winter</a> </li>
-                </ul>
-            </p>
-        </section>
-
-        <hr class="dashed">
-        <h2>Books</h2>
-
-        <section class="book1-container">
-            
+    <meta charset="UTF-8">
+    <link href="styles.css" rel="stylesheet">
+    <meta content="Sequels of a Book - Explore the thrilling sequels of a popular book series." name="description">
+    <meta content="sequels, book sequels, book series, fantasy books,A Game Of Thrones, A Clash Of Kings, A Storm Of Swords, A Feast Of Crows"
+          name="keywords">
+    <meta content="Jieni, Liselot" name="author">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
 
 
-            <section class="book-name">
+<body id="sequels__body">
+<header>
+    <!-- Navigation has been loaded dynamically-->
+</header>
+
+<!-- all the summaries are from amazon-->
+<main>
+    <h1>Sequels of a Book</h1>
+    <section>
+        <h2>About the Series</h2>
+        <p>Long ago, in a time forgotten, a preternatural event threw the seasons out of balance. In a land where
+            summers can last decades and winters a lifetime, trouble is brewing. The cold is returning, and in the
+            frozen wastes to the north of Winterfell, sinister forces are massing beyond the kingdom’s protective
+            Wall. To the south, the king’s powers are failing—his most trusted adviser dead under mysterious
+            circumstances and his enemies emerging from the shadows of the throne. At the center of the conflict lie
+            the Starks of Winterfell, a family as harsh and unyielding as the frozen land they were born to. Now
+            Lord Eddard Stark is reluctantly summoned to serve as the king’s new Hand, an appointment that threatens
+            to sunder not only his family but the kingdom itself.
+        </p>
+
+        <ul>
+            <li><a href="#book1">Book 1: A Game of Thrones </a></li>
+            <li><a href="#book2">Book 2: A Clash of Kings</a></li>
+            <li><a href="#book3">Book 3: A Storm of Swords</a></li>
+            <li><a href="#book4">Book 4: A Feast for Crows</a></li>
+            <li><a href="#book5">Book 5: A Dance with Dragons</a></li>
+            <li><a href="#book6">Book 6: The Winds of Winter</a></li>
+        </ul>
+    </section>
+
+    <hr class="dashed">
+    <h2>Books</h2>
+    <section class="books__container">
+
+        <section class="books__container--individual">
+            <section class="book__name">
 
                 <h3 id="book1">Book 1: A Game of Thrones</h3>
-                <img src="pictures/authorpage/book1.jpg" alt="book 1" title="A Game of Thrones" width=150 height="200">
+                <img alt="book 1" height="200" src="pictures/authorpage/book1.jpg" title="A Game of Thrones" width=150>
             </section>
             <section class="Summary">
                 <p>
-
                     Winter is coming. Such is the stern motto of House Stark, the northernmost of the fiefdoms
                     that
                     owe
@@ -109,17 +97,13 @@
             </section>
         </section>
 
-        <section class="book2-container">
-
-
-
-            <section class="book-name">
+        <section class="books__container--individual">
+            <section class="book__name">
                 <h3 id="book2">Book 2: A Clash of Kings</h3>
 
-                <img src="pictures/authorpage/book2.jpg" alt="book 2" title="A Clash of Kings" width=150 height="200">
+                <img alt="book 2" height="200" src="pictures/authorpage/book2.jpg" title="A Clash of Kings" width=150>
 
             </section>
-
             <section class="Summary">
 
                 <p> In this eagerly awaited sequel to A Game of Thrones, George R. R. Martin has created a work
@@ -151,12 +135,11 @@
             </section>
         </section>
 
-        <section class="book3-container">
-
-            <section class="book-name">
+        <section class="books__container--individual">
+            <section class="book__name">
                 <h3 id="book3">Book 3: A Storm of Swords</h3>
 
-                <img src="pictures/authorpage/book3.jpg" alt="book 3" title="A Storm of Swords" width=150 height="200">
+                <img alt="book 3" height="200" src="pictures/authorpage/book3.jpg" title="A Storm of Swords" width=150>
 
             </section>
             <section class="Summary">
@@ -202,12 +185,12 @@
             </section>
         </section>
 
-        <section class="book4-container">
+        <section class="books__container--individual">
 
-            <section class="book-name">
+            <section class="book__name">
                 <h3 id="book4">Book 4: A Feast for Crows</h3>
 
-                <img src="pictures/authorpage/book4.jpg" alt="book 4" title="A Feast for Crows" width=150 height="200">
+                <img alt="book 4" height="200" src="pictures/authorpage/book4.jpg" title="A Feast for Crows" width=150>
 
             </section>
             <section class="Summary">
@@ -237,13 +220,12 @@
             </section>
         </section>
 
-
-        <section class="book5-container">
-            <section class="book-name">
+        <section class="books__container--individual">
+            <section class="book__name">
                 <h3 id="book5">Book 5: A Dance with Dragons</h3>
 
-                <img src="pictures/authorpage/book5.jpg" alt="book 5" title="A Dance With Dragons" width=150
-                    height="200">
+                <img alt="book 5" height="200" src="pictures/authorpage/book5.jpg" title="A Dance With Dragons"
+                     width=150>
 
             </section>
             <section class="Summary">
@@ -284,12 +266,12 @@
             </section>
         </section>
 
-        <section class="book6-container">
-            <section class="book-name">
+        <section class="books__container--individual">
+            <section class="book__name">
                 <h3 id="book6">Book 6: The Winds of Winter</h3>
 
-                <img src="pictures/authorpage/book6.jpg" alt="book 6" title="The Winds of Winter" width=150
-                    height="200">
+                <img alt="book 6" height="200" src="pictures/authorpage/book6.jpg" title="The Winds of Winter"
+                     width=150>
 
 
             </section>
@@ -329,18 +311,15 @@
                 </p>
             </section>
         </section>
+    </section>
 
-        <!-- We might need to add more books here and maybe even a link to the sequels page -->
 
-    </main>
+    <!-- We might need to add more books here and maybe even a link to the sequels page -->
 
-    <footer>
-        <p>&copy; 2024 ASOIAF, Jieni Ding, Liselot Ankone. All rights reserved.</p>
-    </footer>
+</main>
+<!--footer has been made dynamic-->
+<script src="script.js"></script>
 
-    <script>
-        // We might want to add some JavaScript here later
-    </script>
 </body>
 
 </html>

@@ -1,189 +1,156 @@
-class Person {
-    #name;
-    #yearOfBirth;
-
-    constructor(name, yearOfBirth) {
-        this.#name = name;
-        this.#yearOfBirth = yearOfBirth;
-    }
-
-    get name() {
-        return this.#name;
-    }
-
-    get yearOfBirth() {
-        return this.#yearOfBirth;
-    }
-}
-
-class Author extends Person {
-    #titles;
-    #wikipediaLink;
-
-    constructor(name, yearOfBirth, titles, wikipediaLink) {
-        super(name, yearOfBirth);
-        this.#titles = titles;
-        this.#wikipediaLink = wikipediaLink;
-    }
-
-    get titles() {
-        return this.#titles;
-    }
-
-    get wikipediaLink() {
-        return this.#wikipediaLink;
-    }
-}
-
-class Company {
-    #name;
-    #wikipediaLink;
-
-    constructor(name, wikipediaLink) {
-        this.#name = name;
-        this.#wikipediaLink = wikipediaLink;
-    }
-
-    get name() {
-        return this.#name;
-    }
-
-    get wikipediaLink() {
-        return this.#wikipediaLink;
-    }
-}
-
-class Publisher extends Company {
-    #titles;
-
-    constructor(name, wikipediaLink, titles) {
-        super(name, wikipediaLink);
-        this.#titles = titles;
-    }
-
-    get titles() {
-        return this.#titles;
-    }
-}
-
-class CreativeWork {
-    #authors;
-    #year;
-    #title;
-
-    constructor(authors, year, title) {
-        this.#authors = authors;
-        this.#year = year;
-        this.#title = title;
-    }
-
-    get authors() {
-        return this.#authors;
-    }
-
-    get year() {
-        return this.#year;
-    }
-
-    get title() {
-        return this.#title;
-    }
-}
-
-class Book extends CreativeWork {
-    #genre;
-    #publisher;
-    #cover;
-    #plot;
-
-    constructor(authors, year, title, genre, publisher, cover, plot) {
-        super(authors, year, title);
-        this.#genre = genre;
-        this.#publisher = publisher;
-        this.#cover = cover;
-        this.#plot = plot;
-    }
-
-    get genre() {
-        return this.#genre;
-    }
-
-    get publisher() {
-        return this.#publisher;
-    }
-
-    get cover() {
-
-        return this.#cover;
-    }
-
-    get plot() {
-        return this.#plot;
-    }
-}
-
-let author = new Author("George R. R. Martin", 1948, ["A Game of Thrones"], "https://en.wikipedia.org/wiki/George_R._R._Martin");
-let publisher = new Publisher("Luitingh-Sijthoff", "https://nl.wikipedia.org/wiki/Luitingh-Sijthoff", ["A Game of Thrones", "A Clash of Kings", "A Storm of Swords", "A Feast for Crows", "A Dance with Dragons", "The Winds of Winter", "A Dream of Spring"]);
-let book = new Book([author], 1996, "A Game of Thrones", "Fantasy", publisher, "/pictures/authorpage/book1.jpg",
-    "The Winds of Winterfell\n" +
-    "In the shadow of the ancient castle of Winterfell, the Stark family stands resolute. Eddard “Ned” Stark, the stoic lord, receives a summons that will alter the course of his life. His old friend, King Robert Baratheon, beckons him to the capital, King’s Landing, to serve as Hand of the King. Ned’s honor compels him to accept, though he senses treachery lurking in the shadows.\n" +
-    "\n" +
-    "Lannisters and Lions\n" +
-    "Across the realm, the Lannister lions prowl. Queen Cersei, with her golden hair and silver tongue, conceals secrets like daggers beneath her velvet gowns. Her twin brother, Jaime, the Kingslayer, shares both her blood and her forbidden desires. When young Bran Stark stumbles upon their clandestine tryst, the world tilts on its axis. Jaime’s desperate act—pushing Bran from a tower window—ripples through time, leaving scars on hearts and kingdoms.\n" +
-    "\n" +
-    "The Exiled Princess\n" +
-    "Beyond the Narrow Sea, Daenerys Targaryen, the last scion of the deposed Targaryen dynasty, marries Khal Drogo, a fierce warrior of the nomadic Dothraki. Their union is a fragile alliance, sealed with dragon eggs—the remnants of a lost age. Daenerys, once a pawn, begins to awaken. Her journey from meek bride to Mother of Dragons will echo across continents, igniting flames that threaten to consume all.\n" +
-    "\n" +
-    "The Iron Throne Beckons\n" +
-    "As winter looms, the Iron Throne remains the ultimate prize. Noble houses clash, alliances fray, and whispers of ancient magic resurface. Ned Stark navigates treacherous court politics, unaware that his honor may cost him dearly. Meanwhile, Jon Snow, Ned’s bastard son, forsakes his birthright to join the Night’s Watch—a brotherhood sworn to guard the Wall against the terrors beyond.\n" +
-    "\n" +
-    "Intrigue, Betrayal, and Destiny\n" +
-    "In this game of thrones, no one is safe. Schemes intertwine like ivy on castle walls. The direwolves howl, and the raven’s wings bear secrets. Amidst the clash of swords and the rustle of silken gowns, destinies converge. Winter is coming, and with it, a storm that will reshape the Seven Kingdoms forever.\n" +
-    "\n" +
-    "And so, dear reader, whether you stand in the icy winds of the North or bask in the warmth of King’s Landing, remember that every choice echoes through time, and the game of thrones plays on, heedless of mortal hearts");
-
-let count = 0;
-function calculate() {
-    let counter = document.getElementById('counter');
-    counter.textContent = `King Joffrey has been killed ${count} times`;
-    count++;
-    console.log('yooooooooo');
-}
-
-let mainElement = document.querySelector('main');
 // This function will run when the page loads
-window.onload = function () {
+window.onload = function() {
     console.log("The page has loaded!");
-
-    // Create elements for the book's information
-    let titleElement = document.createElement('h1');
-    titleElement.textContent = book.title;
-
-    let genreElement = document.createElement('p');
-    genreElement.textContent = `Genre: ${book.genre}`;
-
-    let yearElement = document.createElement('p');
-    yearElement.textContent = `Year: ${book.year}`;
-
-    let authorElement = document.createElement('p');
-    authorElement.textContent = `Author: ${author.name}`;
-
-    let publisherElement = document.createElement('p');
-    publisherElement.textContent = `Publisher: ${publisher.name}`;
-
-    let coverElement = document.createElement('img');
-    coverElement.src = book.cover;
-
-    let plotElement = document.createElement('p');
-    plotElement.textContent = `${book.plot}`;
-
-    // Append these elements to the main element
-
-    mainElement.appendChild(titleElement);
-    mainElement.appendChild(genreElement);
-    mainElement.appendChild(yearElement);
-    mainElement.appendChild(authorElement);
-    mainElement.appendChild(publisherElement);
-    mainElement.appendChild(coverElement);
-    mainElement.appendChild(plotElement);
+    url = window.location.href;
+    createNav();
+    createFooter();
+    if (url.endsWith('info.html')) {
+      createInfoPage();
+    }
 }
+
+
+
+function createNav(){
+  var nav = document.createElement('nav');
+  var ul = document.createElement('ul');
+  var pages = ['Homepage', 'Author', 'Reviews', 'Setting', 'Houses', 'Sequels', 'Dynamic Page'];
+  var links = ['index.html', 'author.html', 'reviews.html', 'setting.html', 'houses.html', 'sequels.html', 'info.html'];
+
+  for (var i = 0; i < pages.length; i++) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.textContent = pages[i];
+      a.href = links[i];
+      li.appendChild(a);
+      ul.appendChild(li);
+  }
+
+  nav.appendChild(ul);
+  var header = document.querySelector('header');
+  header.appendChild(nav); 
+
+};
+
+function createFooter() {
+  var footer = document.createElement('footer');
+  var p = document.createElement('p');
+  p.textContent = String.fromCharCode(169) + ' 2024 ASOIAF, Alexander Le, Jieni Ding, Liselot Ankone. All rights reserved.';
+  footer.appendChild(p);
+
+  var label1 = document.createElement('label');
+  label1.setAttribute('for', 'element-select');
+  label1.textContent = 'Choose an element:';
+  footer.appendChild(label1);
+
+  var select1 = document.createElement('select');
+  select1.setAttribute('name', 'elements');
+  select1.setAttribute('id', 'element-select');
+  footer.appendChild(select1);
+
+  var label2 = document.createElement('label');
+  label2.setAttribute('for', 'style-select');
+  label2.textContent = 'Change the appearance:';
+  footer.appendChild(label2);
+
+  var select2 = document.createElement('select');
+  select2.setAttribute('id', 'style-select');
+  footer.appendChild(select2);
+
+  var option1 = document.createElement('option');
+  option1.setAttribute('value', 'font-size');
+  option1.setAttribute('id', 'font');
+  option1.textContent = 'Font Size';
+  select2.appendChild(option1);
+
+  var option2 = document.createElement('option');
+  option2.setAttribute('value', 'color');
+  option2.setAttribute('id', 'color');
+  option2.textContent = 'Color';
+  select2.appendChild(option2);
+
+  var input = document.createElement('input');
+  input.setAttribute('type', 'color');
+  input.setAttribute('id', 'colorchoice');
+  input.setAttribute('hidden', true);
+  footer.appendChild(input);
+
+  var select3 = document.createElement('select');
+  select3.setAttribute('id', 'fontsizechoice');
+  footer.appendChild(select3);
+
+  var sizes = ['xx-small', 'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large'];
+  for (var i = 0; i < sizes.length; i++) {
+      var option = document.createElement('option');
+      option.setAttribute('value', sizes[i]);
+      option.textContent = sizes[i].charAt(0).toUpperCase() + sizes[i].slice(1);
+      select3.appendChild(option);
+  }
+
+  var button = document.createElement('button');
+  button.setAttribute('id', 'style-change-button');
+  button.textContent = 'Change';
+  footer.appendChild(button);
+
+  var body = document.querySelector('body');
+  body.appendChild(footer);
+}
+  
+
+//This function creates a menu with all the different elements on the page
+function createMenu() {
+  const elementoptions = document.getElementById("element-select");
+  const elements = document.querySelectorAll('body, header, footer, aside, article, section, nav');
+  const uniqueElements = [];
+
+  for (let i = 0; i < elements.length; ++i) {
+      if(!uniqueElements.includes(elements[i].nodeName))
+      {
+      const newOption = document.createElement('option');
+      newOption.textContent = elements[i].nodeName;
+      elementoptions.appendChild(newOption);
+      uniqueElements.push(elements[i].nodeName)
+      }
+  }
+}
+
+//This function changes the color or font of a selected section
+function changeStyleOfElement() {
+  const fontValue = document.getElementById("fontsizechoice").value;
+  const colorValue = document.getElementById("colorchoice").value;
+  const elementOptions = document.getElementById("element-select").value;
+  const selectedStyle = document.getElementById("style-select").value;
+  const selectedElements = document.querySelectorAll(elementOptions);
+  if(selectedStyle==="color")
+  {    
+      for (let i = 0; i < selectedElements.length; ++i) 
+      {selectedElements[i].style.color = colorValue;}
+  }
+  else
+  {        
+      for (let i = 0; i < selectedElements.length; ++i) 
+      {selectedElements[i].style.fontSize = fontValue;}
+  }
+}
+
+//This function changes the currently visible property to change
+function changeStyleChoice(){
+  if(document.getElementById("style-select").value =="color")
+  {
+      document.getElementById("fontsizechoice").hidden = true;
+      document.getElementById("colorchoice").hidden = false;
+  }
+  else
+  {
+      document.getElementById("fontsizechoice").hidden = false;
+      document.getElementById("colorchoice").hidden = true;
+  }
+}
+
+window.addEventListener('load', createMenu, false);
+
+var styleButton = document.getElementById('style-change-button');
+styleButton.addEventListener('click', changeStyleOfElement, false);
+
+var styleSelector = document.getElementById('style-select');
+styleSelector.addEventListener('change', changeStyleChoice, false);
