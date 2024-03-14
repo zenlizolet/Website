@@ -124,24 +124,39 @@ class Person {
 function createInfoPage(){
   let author = new Author("George R. R. Martin", 1948, ["A Game of Thrones"], "https://en.wikipedia.org/wiki/George_R._R._Martin");
   let publisher = new Publisher("Luitingh-Sijthoff", "https://nl.wikipedia.org/wiki/Luitingh-Sijthoff", ["A Game of Thrones", "A Clash of Kings", "A Storm of Swords", "A Feast for Crows", "A Dance with Dragons", "The Winds of Winter", "A Dream of Spring"]);
-  let book = new Book([author], 1996, "A Game of Thrones", "Fantasy", publisher, "/pictures/authorpage/book1.jpg",
-      "The Winds of Winterfell\n" +
-      "In the shadow of the ancient castle of Winterfell, the Stark family stands resolute. Eddard “Ned” Stark, the stoic lord, receives a summons that will alter the course of his life. His old friend, King Robert Baratheon, beckons him to the capital, King’s Landing, to serve as Hand of the King. Ned’s honor compels him to accept, though he senses treachery lurking in the shadows.\n" +
-      "\n" +
-      "Lannisters and Lions\n" +
-      "Across the realm, the Lannister lions prowl. Queen Cersei, with her golden hair and silver tongue, conceals secrets like daggers beneath her velvet gowns. Her twin brother, Jaime, the Kingslayer, shares both her blood and her forbidden desires. When young Bran Stark stumbles upon their clandestine tryst, the world tilts on its axis. Jaime’s desperate act—pushing Bran from a tower window—ripples through time, leaving scars on hearts and kingdoms.\n" +
-      "\n" +
-      "The Exiled Princess\n" +
-      "Beyond the Narrow Sea, Daenerys Targaryen, the last scion of the deposed Targaryen dynasty, marries Khal Drogo, a fierce warrior of the nomadic Dothraki. Their union is a fragile alliance, sealed with dragon eggs—the remnants of a lost age. Daenerys, once a pawn, begins to awaken. Her journey from meek bride to Mother of Dragons will echo across continents, igniting flames that threaten to consume all.\n" +
-      "\n" +
-      "The Iron Throne Beckons\n" +
-      "As winter looms, the Iron Throne remains the ultimate prize. Noble houses clash, alliances fray, and whispers of ancient magic resurface. Ned Stark navigates treacherous court politics, unaware that his honor may cost him dearly. Meanwhile, Jon Snow, Ned’s bastard son, forsakes his birthright to join the Night’s Watch—a brotherhood sworn to guard the Wall against the terrors beyond.\n" +
-      "\n" +
-      "Intrigue, Betrayal, and Destiny\n" +
-      "In this game of thrones, no one is safe. Schemes intertwine like ivy on castle walls. The direwolves howl, and the raven’s wings bear secrets. Amidst the clash of swords and the rustle of silken gowns, destinies converge. Winter is coming, and with it, a storm that will reshape the Seven Kingdoms forever.\n" +
-      "\n" +
-      "And so, dear reader, whether you stand in the icy winds of the North or bask in the warmth of King’s Landing, remember that every choice echoes through time, and the game of thrones plays on, heedless of mortal hearts");
-  
+  let book = new Book([author], 1996, "A Game of Thrones", "Fantasy", publisher, "/pictures/authorpage/book1.jpg", '');
+  let TWoW = new Book(undefined, undefined, "The Winds of Winterfell", undefined, undefined, undefined, "In the shadow of the ancient castle of Winterfell, the Stark family stands resolute. Eddard “Ned” Stark, the stoic lord, receives a summons that will alter the course of his life. His old friend, King Robert Baratheon, beckons him to the capital, King’s Landing, to serve as Hand of the King. Ned’s honor compels him to accept, though he senses treachery lurking in the shadows.");
+  let LaL = new Book(undefined, undefined, "Lannisters and Lions", undefined, undefined, undefined, "Across the realm, the Lannister lions prowl. Queen Cersei, with her golden hair and silver tongue, conceals secrets like daggers beneath her velvet gowns. Her twin brother, Jaime, the Kingslayer, shares both her blood and her forbidden desires. When young Bran Stark stumbles upon their clandestine tryst, the world tilts on its axis. Jaime’s desperate act—pushing Bran from a tower window—ripples through time, leaving scars on hearts and kingdoms.");
+  let TEP = new Book(undefined, undefined, "The Exiled Princess", undefined, undefined, undefined, "Beyond the Narrow Sea, Daenerys Targaryen, the last scion of the deposed Targaryen dynasty, marries Khal Drogo, a fierce warrior of the nomadic Dothraki. Their union is a fragile alliance, sealed with dragon eggs—the remnants of a lost age. Daenerys, once a pawn, begins to awaken. Her journey from meek bride to Mother of Dragons will echo across continents, igniting flames that threaten to consume all.");
+  let TITB = new Book(undefined, undefined, "The Iron Throne Beckons", undefined, undefined, undefined, "As winter looms, the Iron Throne remains the ultimate prize. Noble houses clash, alliances fray, and whispers of ancient magic resurface. Ned Stark navigates treacherous court politics, unaware that his honor may cost him dearly. Meanwhile, Jon Snow, Ned’s bastard son, forsakes his birthright to join the Night’s Watch—a brotherhood sworn to guard the Wall against the terrors beyond.");
+  let IBaD = new Book(undefined, undefined, "Intrigue, Betrayal, and Destiny", undefined, undefined, undefined, "In this game of thrones, no one is safe. Schemes intertwine like ivy on castle walls. The direwolves howl, and the raven’s wings bear secrets. Amidst the clash of swords and the rustle of silken gowns, destinies converge. Winter is coming, and with it, a storm that will reshape the Seven Kingdoms forever. And so, dear reader, whether you stand in the icy winds of the North or bask in the warmth of King’s Landing, remember that every choice echoes through time, and the game of thrones plays on, heedless of mortal hearts");
+
+  let TWoW_title = document.createElement('h2');
+  TWoW_title.textContent = TWoW.title;
+  let TWoW_plot = document.createElement('p');
+  TWoW_plot.textContent = TWoW.plot;
+
+  let LaL_title = document.createElement('h2');
+  LaL_title.textContent = LaL.title;
+  let LaL_plot = document.createElement('p');
+  LaL_plot.textContent = LaL.plot;
+
+  let TEP_title = document.createElement('h2');
+  TEP_title.textContent = TEP.title;
+  let TEP_plot = document.createElement('p');
+  TEP_plot.textContent = TEP.plot;
+
+  let TITB_title = document.createElement('h2');
+  TITB_title.textContent = TITB.title;
+  let TITB_plot = document.createElement('p');
+  TITB_plot.textContent = TITB.plot;
+
+  let IBaD_title = document.createElement('h2');
+  IBaD_title.textContent = IBaD.title;
+  let IBaD_plot = document.createElement('p');
+  IBaD_plot.textContent = IBaD.plot;
+
+
   // Create elements for the book's information
   let titleElement = document.createElement('h1');
   titleElement.textContent = book.title;
@@ -165,8 +180,8 @@ function createInfoPage(){
   coverElement.alt = "Book Cover";
   coverElement.setAttribute('id', "info__cover");
   
-  let plotElement = document.createElement('p');
-  plotElement.textContent = `Plot: ${book.plot}`;
+  let plotElement = document.createElement('h1');
+  plotElement.textContent = `Plot`;
   
   // Append these elements to the main element
   let mainElement = document.querySelector('main');
@@ -185,9 +200,11 @@ function createInfoPage(){
   textContainer.appendChild(authorElement);
   textContainer.appendChild(publisherElement);
 
+
   // Create a container for the book's cover
   let coverContainer = document.createElement('div');
   coverContainer.setAttribute('id', "info__cover__container");
+
 
   // Add the book's cover to the cover container
   coverContainer.appendChild(coverElement);
@@ -206,9 +223,19 @@ function createInfoPage(){
   let dashedLine = document.createElement('hr');
   dashedLine.setAttribute('class', "dashed");
   mainElement.appendChild(dashedLine);
-
   mainElement.appendChild(plotElement);
-};
+
+  mainElement.appendChild(TWoW_title);
+  mainElement.appendChild(TWoW_plot);
+  mainElement.appendChild(LaL_title);
+  mainElement.appendChild(LaL_plot)
+  mainElement.appendChild(TEP_title);
+  mainElement.appendChild(TEP_plot);
+  mainElement.appendChild(TITB_title);
+  mainElement.appendChild(TITB_plot);
+  mainElement.appendChild(IBaD_title);
+  mainElement.appendChild(IBaD_plot);
+}
 
 window.onload = function() {
   console.log("The info-page has loaded!");
