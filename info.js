@@ -193,6 +193,7 @@ function createInfoPage(){
   let infoContainer = document.createElement('section');
   infoContainer.setAttribute('id', "info__container");
   infoContainer.style.display = 'flex';
+
   // Add the text and cover containers to the parent container
   infoContainer.appendChild(textContainer);
   infoContainer.appendChild(coverContainer);
@@ -203,10 +204,8 @@ function createInfoPage(){
   dashedLine.setAttribute('class', "dashed");
   mainElement.appendChild(dashedLine);
 
-
-
   mainElement.appendChild(plotElement);
-
+  
   document.body.setAttribute('id', "info__body");
 };
 
