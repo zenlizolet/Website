@@ -82,7 +82,7 @@ function createFooter() {
   select3.setAttribute('id', 'fontsizechoice');
   footer.appendChild(select3);
 
-  var sizes = ['xx-small', 'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large'];
+  var sizes = [ 'xx-small', 'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large'];
   for (var i = 0; i < sizes.length; i++) {
       var option = document.createElement('option');
       option.setAttribute('value', sizes[i]);
@@ -91,7 +91,7 @@ function createFooter() {
   }
 
   var button = document.createElement('button');
-  button.setAttribute('id', 'style-change-button');
+  button.setAttribute('id', 'change-button');
   button.textContent = 'Change';
   footer.appendChild(button);
 
@@ -115,8 +115,14 @@ function createMenu() {
       uniqueElements.push(elements[i].nodeName)
       }
   }
+  
+  var styleButton = document.getElementById('change-button');
+  styleButton.addEventListener('click', changeStyleOfElement, false);
 
-  changeStyleOfElement();
+
+  var styleSelector = document.getElementById('style-select');
+  styleSelector.addEventListener('change', changeStyleChoice, false);
+  
 }
 
 //This function changes the color or font of a selected section
@@ -138,13 +144,10 @@ function changeStyleOfElement() {
       for (let i = 0; i < selectedElements.length; ++i) 
       {selectedElements[i].style.fontSize = fontValue;}
   }
-
-  
 }
 
 //This function changes the currently visible property to change
 function changeStyleChoice(){
-
   console.log("called");
   if(document.getElementById("style-select").value =="color")
   {
@@ -160,9 +163,3 @@ function changeStyleChoice(){
 
 window.addEventListener('load', createMenu, false);
 
-var styleButton = document.getElementById('style-change-button');
-styleButton.addEventListener('click', changeStyleOfElement, false);
-
-
-var styleSelector = document.getElementById('style-select');
-styleSelector.addEventListener('change', changeStyleChoice, false);
