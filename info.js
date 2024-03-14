@@ -142,51 +142,76 @@ function createInfoPage(){
       "\n" +
       "And so, dear reader, whether you stand in the icy winds of the North or bask in the warmth of King’s Landing, remember that every choice echoes through time, and the game of thrones plays on, heedless of mortal hearts");
   
-    // Create elements for the book's information
-    let titleElement = document.createElement('h1');
-    titleElement.textContent = book.title;
-    
-    let genreElement = document.createElement('p');
-    genreElement.textContent = `Genre: ${book.genre}`;
-    
-    let yearElement = document.createElement('p');
-    yearElement.textContent = `Year: ${book.year}`;
-    
-    let authorElement = document.createElement('p');
-    authorElement.textContent = `Author: ${author.name}`;
-    authorElement.setAttribute('title', author.wikipediaLink);
-    
-    let publisherElement = document.createElement('p');
-    publisherElement.textContent = `Publisher: ${publisher.name}`;
-    publisherElement.setAttribute('title', publisher.wikipediaLink);
-    
-    let coverElement = document.createElement('img');
-    coverElement.src = book.cover;
-    
-    let plotElement = document.createElement('p');
-    plotElement.textContent = `Plot: ${book.plot}`;
-    
-      // Append these elements to the main element
-      let mainElement = document.querySelector('main');
-      mainElement.appendChild(titleElement);
-      mainElement.appendChild(genreElement);
-      mainElement.appendChild(yearElement);
-      mainElement.appendChild(authorElement);
-      mainElement.appendChild(publisherElement);
-      mainElement.appendChild(coverElement);
-      mainElement.appendChild(plotElement);
-    
-    };
+  // Create elements for the book's information
+  let titleElement = document.createElement('h1');
+  titleElement.textContent = book.title;
+  
+  let genreElement = document.createElement('p');
+  genreElement.textContent = `Genre: ${book.genre}`;
+  
+  let yearElement = document.createElement('p');
+  yearElement.textContent = `Year: ${book.year}`;
+  
+  let authorElement = document.createElement('p');
+  authorElement.textContent = `Author: ${author.name}`;
+  authorElement.setAttribute('title', author.wikipediaLink);
+  
+  let publisherElement = document.createElement('p');
+  publisherElement.textContent = `Publisher: ${publisher.name}`;
+  publisherElement.setAttribute('title', publisher.wikipediaLink);
+  
+  let coverElement = document.createElement('img');
+  coverElement.src = book.cover;
+  coverElement.alt = "Book Cover";
+  coverElement.setAttribute('id', "info__cover");
+  
+  let plotElement = document.createElement('p');
+  plotElement.textContent = `Plot: ${book.plot}`;
+  
+  // Append these elements to the main element
+  let mainElement = document.querySelector('main');
+  
+  //set the body id, used for styling
+  document.body.setAttribute('id', "info__body");
+ 
+  // Create a container for the book's information
+  let textContainer = document.createElement('div');
+  textContainer.setAttribute('id', "info__text__container");
 
-    window.onload = function() {
-        console.log("The info-page has loaded!");
-        createInfoPage();
-    }
+  // Add the book's information to the text container
+  textContainer.appendChild(titleElement);
+  textContainer.appendChild(genreElement);
+  textContainer.appendChild(yearElement);
+  textContainer.appendChild(authorElement);
+  textContainer.appendChild(publisherElement);
 
-const backgroundCSS = css => {
-  let bgCSS = document.createElement('style');
-  bgCSS.innerHTML = css;
-  document.head.appendChild(bgCSS);
-  return bgCSS;
+  // Create a container for the book's cover
+  let coverContainer = document.createElement('div');
+  coverContainer.setAttribute('id', "info__cover__container");
+
+  // Add the book's cover to the cover container
+  coverContainer.appendChild(coverElement);
+
+  // Create a parent container for the text and cover containers
+  let infoContainer = document.createElement('section');
+  infoContainer.setAttribute('id', "info__container");
+  infoContainer.style.display = 'flex';
+
+  // Add the text and cover containers to the parent container
+  infoContainer.appendChild(textContainer);
+  infoContainer.appendChild(coverContainer);
+  mainElement.appendChild(infoContainer);
+
+  //create a dashed line
+  let dashedLine = document.createElement('hr');
+  dashedLine.setAttribute('class', "dashed");
+  mainElement.appendChild(dashedLine);
+
+  mainElement.appendChild(plotElement);
+};
+
+window.onload = function() {
+  console.log("The info-page has loaded!");
+  createInfoPage();
 }
-backgroundCSS('body {background-image: url("/images/GOT.png");  background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: 0 35%}');
+    
