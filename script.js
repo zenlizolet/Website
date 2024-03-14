@@ -103,7 +103,7 @@ function createFooter() {
 //This function creates a menu with all the different elements on the page
 function createMenu() {
   const elementoptions = document.getElementById("element-select");
-  const elements = document.querySelectorAll('body, header, footer, aside, article, section, nav');
+  const elements = document.querySelectorAll(' body, header, footer, aside, article, section, nav');
   const uniqueElements = [];
 
   for (let i = 0; i < elements.length; ++i) {
@@ -159,6 +159,11 @@ function changeStyleChoice(){
       document.getElementById("fontsizechoice").hidden = false;
       document.getElementById("colorchoice").hidden = true;
   }
+}
+
+function check()
+{
+  console.log("hello");
 }
 
 window.addEventListener('load', createMenu, false);
