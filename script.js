@@ -4,9 +4,12 @@ window.onload = function() {
     url = window.location.href;
     createNav();
     createFooter();
+    
     if (url.endsWith('info.html')) {
       createInfoPage();
     }
+
+ 
 }
 
 
@@ -112,15 +115,19 @@ function createMenu() {
       uniqueElements.push(elements[i].nodeName)
       }
   }
+
+  changeStyleOfElement();
 }
 
 //This function changes the color or font of a selected section
 function changeStyleOfElement() {
   const fontValue = document.getElementById("fontsizechoice").value;
+  console.log(fontValue);
   const colorValue = document.getElementById("colorchoice").value;
   const elementOptions = document.getElementById("element-select").value;
   const selectedStyle = document.getElementById("style-select").value;
   const selectedElements = document.querySelectorAll(elementOptions);
+ 
   if(selectedStyle==="color")
   {    
       for (let i = 0; i < selectedElements.length; ++i) 
@@ -131,10 +138,14 @@ function changeStyleOfElement() {
       for (let i = 0; i < selectedElements.length; ++i) 
       {selectedElements[i].style.fontSize = fontValue;}
   }
+
+  
 }
 
 //This function changes the currently visible property to change
 function changeStyleChoice(){
+
+  console.log("called");
   if(document.getElementById("style-select").value =="color")
   {
       document.getElementById("fontsizechoice").hidden = true;
@@ -151,6 +162,7 @@ window.addEventListener('load', createMenu, false);
 
 var styleButton = document.getElementById('style-change-button');
 styleButton.addEventListener('click', changeStyleOfElement, false);
+
 
 var styleSelector = document.getElementById('style-select');
 styleSelector.addEventListener('change', changeStyleChoice, false);
