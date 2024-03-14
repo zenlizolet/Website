@@ -133,6 +133,7 @@ window.onload = function() {
     url = window.location.href;
     createNav();
     createFooter();
+    
     if (url.endsWith('info.html')) {
       createInfoPage();
     }
@@ -164,14 +165,51 @@ function createNav(){
 function createFooter(){
   var footer = document.createElement('footer');
   var p = document.createElement('p');
+  var select = documet.createElement('select');
   p.textContent = String.fromCharCode(169) + ' 2024 ASOIAF, Alexander Le, Jieni Ding, Liselot Ankone. All rights reserved.';
   footer.appendChild(p);
+  footer.appendChild(select);
   var body = document.querySelector('body');
   body.appendChild(footer);
 };
-  
 
-    
+function changeStyleOfElement() {
+  const fontValue = document.getElementById("font-select").value;
+  const colorValue = document.getElementById("color-select").value;
+  const elementOptions = document.getElementById("element-select").value;
+  const selectedStyle = document.getElementById("style-select").value;
+  const selectedElements = document.querySelectorAll(elementOptions);
+  if(selectedStyle==="color")
+  {    
+      for (let i = 0; i < selectedElements.length; ++i) 
+      {selectedElements[i].style.color = colorValue;}
+  }
+  else
+  {        
+      for (let i = 0; i < selectedElements.length; ++i) 
+      {selectedElements[i].style.fontSize = fontValue;}
+  }
+}
+
+//This function changes the currently visible property to change
+function changeStyleChoice(){
+  if(document.getElementById("style-select").value =="color")
+  {
+      document.getElementById("font-select").hidden = true;
+      document.getElementById("color-select").hidden = false;
+  }
+  else
+  {
+      document.getElementById("font-select").hidden = false;
+      document.getElementById("color-select").hidden = true;
+  }
+}
+
+var fontButton = document.getElementById('select-font-button');
+fontButton.addEventListener('click', changeFont, false);
+
+var styleSelector = document.getElementById('style-select');
+styleSelector.addEventListener('change', changeStyleChoice, false);   
 function createInfoPage(){
 // Create elements for the book's information
 let titleElement = document.createElement('h1');
