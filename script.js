@@ -128,7 +128,6 @@ function createMenu() {
 //This function changes the color or font of a selected section
 function changeStyleOfElement() {
   const fontValue = document.getElementById("fontsizechoice").value;
-  console.log(fontValue);
   const colorValue = document.getElementById("colorchoice").value;
   const elementOptions = document.getElementById("element-select").value;
   const selectedStyle = document.getElementById("style-select").value;
@@ -148,7 +147,6 @@ function changeStyleOfElement() {
 
 //This function changes the currently visible property to change
 function changeStyleChoice(){
-  console.log("called");
   if(document.getElementById("style-select").value =="color")
   {
       document.getElementById("fontsizechoice").hidden = true;
@@ -161,10 +159,6 @@ function changeStyleChoice(){
   }
 }
 
-function check()
-{
-  console.log("hello");
-}
 
 window.addEventListener('load', createMenu, false);
 
