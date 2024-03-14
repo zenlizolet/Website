@@ -1,132 +1,3 @@
-class Person {
-    #name;
-    #yearOfBirth;
-  
-    constructor(name, yearOfBirth) {
-      this.#name = name;
-      this.#yearOfBirth = yearOfBirth;
-    }
-  
-    get name() {
-      return this.#name;
-    }
-  
-    get yearOfBirth() {
-      return this.#yearOfBirth;
-    }
-  }
-  
-  class Author extends Person {
-    #titles;
-    #wikipediaLink;
-  
-    constructor(name, yearOfBirth, titles, wikipediaLink) {
-      super(name, yearOfBirth);
-      this.#titles = titles;
-      this.#wikipediaLink = wikipediaLink;
-    }
-  
-    get titles() {
-      return this.#titles;
-    }
-  
-    get wikipediaLink() {
-      return this.#wikipediaLink;
-    }
-  }
-  
-  class Company {
-    #name;
-    #wikipediaLink;
-  
-    constructor(name, wikipediaLink) {
-      this.#name = name;
-      this.#wikipediaLink = wikipediaLink;
-    }
-  
-    get name() {
-      return this.#name;
-    }
-  
-    get wikipediaLink() {
-      return this.#wikipediaLink;
-    }
-  }
-  
-  class Publisher extends Company {
-    #titles;
-  
-    constructor(name, wikipediaLink, titles) {
-      super(name, wikipediaLink);
-      this.#titles = titles;
-    }
-  
-    get titles() {
-      return this.#titles;
-    }
-  }
-  
-  class CreativeWork {
-    #authors;
-    #year;
-    #title;
-  
-    constructor(authors, year, title) {
-      this.#authors = authors;
-      this.#year = year;
-      this.#title = title;
-    }
-  
-    get authors() {
-      return this.#authors;
-    }
-  
-    get year() {
-      return this.#year;
-    }
-  
-    get title() {
-      return this.#title;
-    }
-  }
-  
-  class Book extends CreativeWork {
-    #genre;
-    #publisher;
-    #cover;
-    #plot;
-  
-    constructor(authors, year, title, genre, publisher, cover, plot) {
-      super(authors, year, title);
-      this.#genre = genre;
-      this.#publisher = publisher;
-      this.#cover = cover;
-      this.#plot = plot;
-    }
-  
-    get genre() {
-      return this.#genre;
-    }
-  
-    get publisher() {
-      return this.#publisher;
-    }
-  
-    get cover() {
-      return this.#cover;
-    }
-  
-    get plot() {
-      return this.#plot;
-    }
-  }
-let author = new Author("George R. R. Martin", 1948, ["A Game of Thones"], "https://en.wikipedia.org/wiki/George_R._R._Martin");
-let publisher = new Publisher("Luitingh-Sijthoff", "https://nl.wikipedia.org/wiki/Luitingh-Sijthoff", ["A Game of Thones", "A Clash of Kings", "A Storm of Swords", "A Feast for Crows", "A Dance with Dragons", "The Winds of Winter", "A Dream of Spring"]);
-
-let book = new Book([author], 1996, "A Game of Thrones", "Fantasy", publisher, "https://upload.wikimedia.org/wikipedia/en/d/d8/A_Game_of_Thrones.jpg", "The book is set in the fictional Seven Kingdoms of Westeros and the continent of Essos, and follows the noble families fighting for the Iron Throne and control of Westeros.");
-
-
-
 // This function will run when the page loads
 window.onload = function() {
     console.log("The page has loaded!");
@@ -155,27 +26,100 @@ function createNav(){
       li.appendChild(a);
       ul.appendChild(li);
   }
-  
+
   nav.appendChild(ul);
   var header = document.querySelector('header');
   header.appendChild(nav); 
 
 };
 
-function createFooter(){
+function createFooter() {
   var footer = document.createElement('footer');
   var p = document.createElement('p');
   var select = documet.createElement('select');
   p.textContent = String.fromCharCode(169) + ' 2024 ASOIAF, Alexander Le, Jieni Ding, Liselot Ankone. All rights reserved.';
   footer.appendChild(p);
-  footer.appendChild(select);
+
+  var label1 = document.createElement('label');
+  label1.setAttribute('for', 'element-select');
+  label1.textContent = 'Choose an element:';
+  footer.appendChild(label1);
+
+  var select1 = document.createElement('select');
+  select1.setAttribute('name', 'elements');
+  select1.setAttribute('id', 'element-select');
+  footer.appendChild(select1);
+
+  var label2 = document.createElement('label');
+  label2.setAttribute('for', 'style-select');
+  label2.textContent = 'Change the appearance:';
+  footer.appendChild(label2);
+
+  var select2 = document.createElement('select');
+  select2.setAttribute('id', 'style-select');
+  footer.appendChild(select2);
+
+  var option1 = document.createElement('option');
+  option1.setAttribute('value', 'font-size');
+  option1.setAttribute('id', 'font');
+  option1.textContent = 'Font Size';
+  select2.appendChild(option1);
+
+  var option2 = document.createElement('option');
+  option2.setAttribute('value', 'color');
+  option2.setAttribute('id', 'color');
+  option2.textContent = 'Color';
+  select2.appendChild(option2);
+
+  var input = document.createElement('input');
+  input.setAttribute('type', 'color');
+  input.setAttribute('id', 'colorchoice');
+  input.setAttribute('hidden', true);
+  footer.appendChild(input);
+
+  var select3 = document.createElement('select');
+  select3.setAttribute('id', 'fontsizechoice');
+  footer.appendChild(select3);
+
+  var sizes = ['xx-small', 'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large'];
+  for (var i = 0; i < sizes.length; i++) {
+      var option = document.createElement('option');
+      option.setAttribute('value', sizes[i]);
+      option.textContent = sizes[i].charAt(0).toUpperCase() + sizes[i].slice(1);
+      select3.appendChild(option);
+  }
+
+  var button = document.createElement('button');
+  button.setAttribute('id', 'style-change-button');
+  button.textContent = 'Change';
+  footer.appendChild(button);
+
   var body = document.querySelector('body');
   body.appendChild(footer);
-};
+}
+  
 
+//This function creates a menu with all the different elements on the page
+function createMenu() {
+  const elementoptions = document.getElementById("element-select");
+  const elements = document.querySelectorAll('body, header, footer, aside, article, section, nav');
+  const uniqueElements = [];
+
+  for (let i = 0; i < elements.length; ++i) {
+      if(!uniqueElements.includes(elements[i].nodeName))
+      {
+      const newOption = document.createElement('option');
+      newOption.textContent = elements[i].nodeName;
+      elementoptions.appendChild(newOption);
+      uniqueElements.push(elements[i].nodeName)
+      }
+  }
+}
+
+//This function changes the color or font of a selected section
 function changeStyleOfElement() {
-  const fontValue = document.getElementById("font-select").value;
-  const colorValue = document.getElementById("color-select").value;
+  const fontValue = document.getElementById("fontsizechoice").value;
+  const colorValue = document.getElementById("colorchoice").value;
   const elementOptions = document.getElementById("element-select").value;
   const selectedStyle = document.getElementById("style-select").value;
   const selectedElements = document.querySelectorAll(elementOptions);
@@ -195,52 +139,20 @@ function changeStyleOfElement() {
 function changeStyleChoice(){
   if(document.getElementById("style-select").value =="color")
   {
-      document.getElementById("font-select").hidden = true;
-      document.getElementById("color-select").hidden = false;
+      document.getElementById("fontsizechoice").hidden = true;
+      document.getElementById("colorchoice").hidden = false;
   }
   else
   {
-      document.getElementById("font-select").hidden = false;
-      document.getElementById("color-select").hidden = true;
+      document.getElementById("fontsizechoice").hidden = false;
+      document.getElementById("colorchoice").hidden = true;
   }
 }
 
-var fontButton = document.getElementById('select-font-button');
-fontButton.addEventListener('click', changeFont, false);
+window.addEventListener('load', createMenu, false);
+
+var styleButton = document.getElementById('style-change-button');
+styleButton.addEventListener('click', changeStyleOfElement, false);
 
 var styleSelector = document.getElementById('style-select');
-styleSelector.addEventListener('change', changeStyleChoice, false);   
-function createInfoPage(){
-// Create elements for the book's information
-let titleElement = document.createElement('h1');
-titleElement.textContent = book.title;
-
-let genreElement = document.createElement('p');
-genreElement.textContent = `Genre: ${book.genre}`;
-
-let yearElement = document.createElement('p');
-yearElement.textContent = `Year: ${book.year}`;
-
-let authorElement = document.createElement('p');
-authorElement.textContent = `Author: ${author.name}`;
-
-let publisherElement = document.createElement('p');
-publisherElement.textContent = `Publisher: ${publisher.name}`;
-
-let coverElement = document.createElement('img');
-coverElement.src = book.cover;
-
-let plotElement = document.createElement('p');
-plotElement.textContent = `Plot: ${book.plot}`;
-
-  // Append these elements to the main element
-  let mainElement = document.querySelector('main');
-  mainElement.appendChild(titleElement);
-  mainElement.appendChild(genreElement);
-  mainElement.appendChild(yearElement);
-  mainElement.appendChild(authorElement);
-  mainElement.appendChild(publisherElement);
-  mainElement.appendChild(coverElement);
-  mainElement.appendChild(plotElement);
-
-};
+styleSelector.addEventListener('change', changeStyleChoice, false);
