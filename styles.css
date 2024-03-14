@@ -339,16 +339,16 @@ tr:nth-child(even){
   align-self: flex-end;
 }
 
-/*css for the sequels-page*/
+/*css for the sequels-page!*/
 #sequels__body{
   background-image: url('images/braavos.png');
-  background-size: 100%; 
   background-repeat: no-repeat;
-  background-position: center; 
   background-attachment: fixed;
+  background-size: cover;
+  background-position: 0 35%
 }
 
-.books-in-order img{
+.books-in-order img{  
   float: left;
   padding: 10px;
   align-items: stretch;
