@@ -143,7 +143,6 @@ function createInfoPage(){
   let TITB = new Book([author], 1812, "The Iron Throne Beckons", "Fantasy", publisher, "/pictures/authorpage/book5.jpg", "As winter looms, the Iron Throne remains the ultimate prize. Noble houses clash, alliances fray, and whispers of ancient magic resurface. Ned Stark navigates treacherous court politics, unaware that his honor may cost him dearly. Meanwhile, Jon Snow, Ned’s bastard son, forsakes his birthright to join the Night’s Watch—a brotherhood sworn to guard the Wall against the terrors beyond.");
   let IBaD = new Book([author], 1992, "Intrigue, Betrayal, and Destiny","Fantasy" , publisher,  "/pictures/authorpage/book6.jpg", "In this game of thrones, no one is safe. Schemes intertwine like ivy on castle walls. The direwolves howl, and the raven’s wings bear secrets. Amidst the clash of swords and the rustle of silken gowns, destinies converge. Winter is coming, and with it, a storm that will reshape the Seven Kingdoms forever. And so, dear reader, whether you stand in the icy winds of the North or bask in the warmth of King’s Landing, remember that every choice echoes through time, and the game of thrones plays on, heedless of mortal hearts");
 
-  console.log(TWoW.publisher);
   // Making the paragraph headers and their paragraphs.
   let titleTWoW = document.createElement('h2');
   titleTWoW.textContent = TWoW.title;
