@@ -12,8 +12,6 @@ window.onload = function () {
 
 }
 
-
-
 function createNav() {
     var nav = document.createElement('nav');
     var ul = document.createElement('ul');
@@ -35,6 +33,9 @@ function createNav() {
 
 };
 
+/**
+ * Creates a footer element with the menus to change the font size and color of the elements on the page
+ */
 function createFooter() {
     var footer = document.createElement('footer');
     var p = document.createElement('p');
@@ -103,6 +104,7 @@ function createFooter() {
 //This function creates a menu with all the different elements on the page
 function createMenu() {
     const elementoptions = document.getElementById("element-select");
+    //when we have not used elements in the page, they will not show up in the dropdown, but we have implemented them in the code as you can see below
     const elements = document.querySelectorAll(' body, header, footer, aside, article, section, nav');
     const uniqueElements = [];
 

@@ -11,6 +11,10 @@ class Person {
     get name() {
       return this.#name;
     }
+
+    set name(newName) {
+      this.#name = newName;
+    }
   
     get yearOfBirth() {
       return this.#yearOfBirth;
@@ -29,6 +33,10 @@ class Person {
   
     get titles() {
       return this.#titles;
+    }
+
+    set titles(newTitles) {
+      this.#titles = newTitles;
     }
   
     get wikipediaLink() {
@@ -122,6 +130,9 @@ class Person {
     }
   }
 
+/**
+ * Creates an info page with book information and plot summary.
+ */
 function createInfoPage(){
   let author = new Author("George R. R. Martin", 1948, ["A Game of Thrones"], "https://en.wikipedia.org/wiki/George_R._R._Martin");
   let publisher = new Publisher("Luitingh-Sijthoff", "https://nl.wikipedia.org/wiki/Luitingh-Sijthoff", ["A Game of Thrones", "A Clash of Kings", "A Storm of Swords", "A Feast for Crows", "A Dance with Dragons", "The Winds of Winter", "A Dream of Spring"]);
@@ -179,6 +190,7 @@ function createInfoPage(){
   let coverElement = document.createElement('img');
   coverElement.src = book.cover;
   coverElement.alt = "Book Cover";
+  coverElement.setAttribute('title', 'this is a tooltip with extra information about this book cover :)')
   coverElement.setAttribute('id', "info__cover");
   
   let plotElement = document.createElement('h1');
@@ -229,6 +241,7 @@ function createInfoPage(){
   killButton.textContent = 'Poison King Joffrey';
   killButton.addEventListener('click', calculate);
 
+  //create a counter for the amount of times King Joffrey has been killed
   let killCounter = document.createElement('p');
   killCounter.id = 'counter';
 
@@ -250,10 +263,9 @@ function createInfoPage(){
     deathGif.setAttribute('id', "deathGif");
   }
 
+  //finally add all the elements to the main element
   mainElement.appendChild(dashedLine);
-
   mainElement.appendChild(plotElement);
-
   mainElement.appendChild(titleTWoW);
   mainElement.appendChild(plotTWoW);
   mainElement.appendChild(titleLAL);
