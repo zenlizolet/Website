@@ -215,6 +215,22 @@ function createInfoPage(){
   let plotElement = document.createElement('h1');
   plotElement.textContent = `Plot`;
   
+  // Create a section for the plotpoints
+  let plotSection = document.createElement('section');
+  plotSection.setAttribute('id', "plot__container");
+  plotSection.appendChild(plotElement);
+  plotSection.appendChild(titleTWoW);
+  plotSection.appendChild(descTWoW);
+  plotSection.appendChild(titleLAL);
+  plotSection.appendChild(descLAL)
+  plotSection.appendChild(titleTEP);
+  plotSection.appendChild(descTEP);
+  plotSection.appendChild(titleTITB);
+  plotSection.appendChild(descTITB);
+  plotSection.appendChild(titleIBaD);
+  plotSection.appendChild(descIBaD);
+  
+  
   // Append these elements to the main element
   let mainElement = document.querySelector('main');
   
@@ -281,23 +297,19 @@ function createInfoPage(){
     deathGif.title = "Poisoned by gangster grandma.";
     deathGif.setAttribute('id', "deathGif");
   }
+  //put joffrey in his section
+  let joffreySection = document.createElement('section');
+  joffreySection.setAttribute('id', "joffrey__container");
+  joffreySection.appendChild(killButton);
+  joffreySection.appendChild(killCounter);
+  joffreySection.appendChild(deathGif);
+
+
 
   //finally add all the elements to the main element
   mainElement.appendChild(dashedLine);
-  mainElement.appendChild(plotElement);
-  mainElement.appendChild(titleTWoW);
-  mainElement.appendChild(descTWoW);
-  mainElement.appendChild(titleLAL);
-  mainElement.appendChild(descLAL)
-  mainElement.appendChild(titleTEP);
-  mainElement.appendChild(descTEP);
-  mainElement.appendChild(titleTITB);
-  mainElement.appendChild(descTITB);
-  mainElement.appendChild(titleIBaD);
-  mainElement.appendChild(descIBaD);
-  mainElement.appendChild(killButton);
-  mainElement.appendChild(killCounter);
-  mainElement.appendChild(deathGif);
+  mainElement.appendChild(plotSection);
+  mainElement.appendChild(joffreySection);
 }
 
 window.onload = function() {
