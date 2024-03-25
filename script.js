@@ -2,7 +2,7 @@
 window.onload = function () {
     console.log("The page has loaded!");
     url = window.location.href;
-    createNav();
+    createNavBar();
     createFooter();
 
     if (url.endsWith('info.html')) {
@@ -12,12 +12,9 @@ window.onload = function () {
 
 }
 
-function createNav() {
-    var nav = document.createElement('nav');
+function createNav(pages, links, div ,ulClass) {
     var ul = document.createElement('ul');
-    var pages = ['Homepage', 'Author', 'Reviews', 'Setting', 'Houses', 'Sequels', 'Dynamic Page'];
-    var links = ['index.html', 'author.html', 'reviews.html', 'setting.html', 'houses.html', 'sequels.html', 'info.html'];
-
+    ul.className = ulClass;
     for (var i = 0; i < pages.length; i++) {
         var li = document.createElement('li');
         var a = document.createElement('a');
@@ -26,12 +23,34 @@ function createNav() {
         li.appendChild(a);
         ul.appendChild(li);
     }
+    div.appendChild(ul);
+    return div;
+};
 
-    nav.appendChild(ul);
+function createNavLeft() {
+    var div = document.createElement('div');
+    div.id = 'nav--left';
+    var pages = ['Homepage', 'Author', 'Reviews', 'Setting', 'Houses', 'Sequels', 'Dynamic Page'];
+    var links = ['index.html', 'author.html', 'reviews.html', 'setting.html', 'houses.html', 'sequels.html', 'info.html'];
+    return createNav(pages, links,div, 'nav-left');
+};
+
+function createNavRight() {
+    var div = document.createElement('div');
+    div.id = 'nav--right';
+    var pages = ['Catalog', ' Login'];
+    var links = ['catalog.html', 'login.html'];
+    return createNav(pages, links,div, 'nav-right');
+};
+
+function createNavBar() {
+    var nav = document.createElement('nav');
+    nav.appendChild(createNavLeft());
+    nav.appendChild(createNavRight());
     var header = document.querySelector('header');
     header.appendChild(nav);
+}
 
-};
 
 /**
  * Creates a footer element with the menus to change the font size and color of the elements on the page

@@ -12,7 +12,12 @@ body {
   flex-direction: column;
   position:relative;
   min-height: 100vh;
-} 
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
 
 header h1 {
   text-align: Left;
@@ -90,16 +95,25 @@ footer {
 }
 
 /*style for the navigation bar*/
+nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #191512;
+}
+
 nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #191512;
+  display: flex;
 }
 
-nav li {
-  float: left ;
+
+#nav-right ul {
+  margin-left: auto;
 }
 
 nav li a {
@@ -431,6 +445,57 @@ tr:nth-child(even){
   height:auto;
 }
 
+/*css for the login page*/
+#login__body{
+  background-image: url('images/throneroom_cover.jpg');
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.login__container{
+  background-color: #1a1511;
+  padding: 40px;
+  border-radius: 5px;
+  margin: 20% 10% 0% 10%;
+}
+
+.login__container h1{
+  text-align: center;
+}
+
+.login__input{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#login__body form{
+  display: flex;
+  flex-direction: column;
+}
+
+.login__account , .signup__account{
+  display: flex;
+  justify-content: center;
+}
+
+.login__button{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+/*css for the catalog page*/
+#catalog__body{
+  background-image: url('images/library.jpg');
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-attachment: fixed;
+  background-size: cover;
+}
 
 /* Responsive css */
 
@@ -438,6 +503,10 @@ tr:nth-child(even){
   /* Styles for desktop */
   main{
     width: 60%;
+  }
+
+  #login__main{
+    width: 35%;
   }
 
   .container {
@@ -467,6 +536,21 @@ tr:nth-child(even){
   #info__text__container {
     margin-left: 30px;
     min-width: 300px;
+  }
+}
+
+@media (min-width:769px){
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  #nav-right ul {
+    margin-left: auto;
   }
 }
 
