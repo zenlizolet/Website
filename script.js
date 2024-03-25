@@ -2,7 +2,8 @@
 window.onload = function () {
     console.log("The page has loaded!");
     url = window.location.href;
-    createNav();
+    createNavLeft();
+    createNavRight();
     createFooter();
 
     if (url.endsWith('info.html')) {
@@ -12,11 +13,9 @@ window.onload = function () {
 
 }
 
-function createNav() {
+function createNav(pages, links, position) {
     var nav = document.createElement('nav');
     var ul = document.createElement('ul');
-    var pages = ['Homepage', 'Author', 'Reviews', 'Setting', 'Houses', 'Sequels', 'Dynamic Page'];
-    var links = ['index.html', 'author.html', 'reviews.html', 'setting.html', 'houses.html', 'sequels.html', 'info.html'];
 
     for (var i = 0; i < pages.length; i++) {
         var li = document.createElement('li');
@@ -28,9 +27,21 @@ function createNav() {
     }
 
     nav.appendChild(ul);
+    nav.style.float = position;
     var header = document.querySelector('header');
     header.appendChild(nav);
+};
 
+function createNavLeft() {
+    var pages = ['Homepage', 'Author', 'Reviews', 'Setting', 'Houses', 'Sequels', 'Dynamic Page'];
+    var links = ['index.html', 'author.html', 'reviews.html', 'setting.html', 'houses.html', 'sequels.html', 'info.html'];
+    createNav(pages, links, 'left');
+};
+
+function createNavRight() {
+    var pages = ['Catalog', ' Login'];
+    var links = ['catalog.html', 'login.html'];
+    createNav(pages, links);
 };
 
 /**
