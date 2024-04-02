@@ -90,6 +90,27 @@ function login() {
 
     // Add event listener to the create account button
     createAccountButton.addEventListener('click', signup);
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        const username = usernameInput.value;
+        const password = passwordInput.value;
+    
+        fetch('/backend/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Verwerk de serverrespons hier. Bijvoorbeeld, als de inlogpoging succesvol was, kunt u de gebruiker doorsturen naar een andere pagina.
+        })
+        .catch(error => {
+            // Verwerk eventuele fouten hier
+        });
+    });
 }
 
 // Function to be called for signup

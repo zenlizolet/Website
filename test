@@ -1,0 +1,45 @@
+const express = require('express');
+const session = require('express-session');
+const app = express();
+const port = 8056;
+
+// Serve static files from the "public" directory
+app.use(express.static(__dirname));
+
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Session middleware
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: true,
+}));
+
+// Define routes for your pages
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/author', (req, res) => {
+  res.sendFile(__dirname + '/author.html');
+});
+
+// Login route
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+
+  // TODO: Validate username and password with your database here
+
+  // If valid, start a session
+  if (username && password) {
+    req.session.user = { username };
+    res.json({ message: 'Logged in successfully' });
+  } else {
+    res.status(400).json({ error: 'Invalid username or password' });
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
