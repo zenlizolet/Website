@@ -446,7 +446,7 @@ tr:nth-child(even){
 }
 
 /*css for the login page*/
-#login__body{
+#login__body, #signup__body{
   background-image: url('images/throneroom_cover.jpg');
   background-repeat: no-repeat;
   background-position: center; 
@@ -454,24 +454,28 @@ tr:nth-child(even){
   background-size: cover;
 }
 
-.login__container{
+.form__container{
   background-color: #1a1511;
   padding: 40px;
   border-radius: 5px;
   margin: 20% 10% 0% 10%;
 }
 
-.login__container h1{
+.form__container h1{
   text-align: center;
 }
 
-.login__input{
+.form__input{
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
 }
 
 #login__body form{
+  display: flex;
+  flex-direction: column;
+}
+#signup__body form{
   display: flex;
   flex-direction: column;
 }
@@ -505,7 +509,7 @@ tr:nth-child(even){
     width: 60%;
   }
 
-  #login__main{
+  #login__main, #signup__main{
     width: 35%;
   }
 
