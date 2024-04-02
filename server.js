@@ -68,6 +68,34 @@ app.post('/api/login', (req, res) => {
   });
 });
 
+app.post('/api/signup', (req, res) => {
+  const { first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method, password } = req.body;
+
+
+  // Check if user already exists
+  db.get('SELECT * FROM user WHERE first_name = ?', [first_name], (err, row) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    if (row) {
+      return res.status(400).json({ error: 'Username already taken' });
+    }
+
+    // Insert new user
+    db.run('INSERT INTO user (password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', [password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method], function(err) {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+
+      // Store user's ID in the session
+      req.session.userId = this.lastID;
+
+      res.json({ success: true, message: 'Signup successful', user: { id: this.lastID, name: first_name } });
+    });
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

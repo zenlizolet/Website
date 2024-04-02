@@ -1,79 +1,137 @@
 // Set the body id, used for styling
 document.body.setAttribute('id', 'signup__body');
 
-//clear the main element when changing the page
-function clearMain() {
-    const main = document.querySelector('main');
-    while (main.firstChild) {
-        main.removeChild(main.firstChild);
-    }
+function createInputWithLabel(signupForm, labelText, placeholder, type = 'text') {
+    const label = document.createElement('label');
+    label.textContent = labelText + ': ';
+    signupForm.appendChild(label);
+
+    const input = document.createElement('input');
+    input.classList.add('form__input');
+    input.placeholder = placeholder;
+    input.required = true;
+    input.type = type;
+    input.setAttribute('aria-label', labelText);
+    signupForm.appendChild(input);
+
+    // Add a line break for better formatting
+    signupForm.appendChild(document.createElement('br'));
+
+    return input;
 }
 
-// Function to be called for signup
-function pageload() {
-    clearMain();
-    // Select the main element
+
+async function signupUser() {
     const main = document.querySelector('main');
     main.setAttribute('id', 'signup__main');
 
-
-    // Create form container
     const formContainer = document.createElement('div');
     formContainer.setAttribute('class', 'form__container');
 
-    // Create h1 element for sign up
-    const signUpTitle = document.createElement('h1');
-    signUpTitle.textContent = 'Sign Up';
-    signUpTitle.setAttribute('class', 'signup__title');
-    formContainer.appendChild(signUpTitle);
+    const signupTitle = document.createElement('h1');
+    signupTitle.textContent = 'Sign Up';
+    signupTitle.setAttribute('class', 'signup__title');
+    formContainer.appendChild(signupTitle);
 
-    // Create form for sign up
-    const signUpForm = document.createElement('form');
+    const signupForm = document.createElement('form');
 
-    // Create email input
-    const emailInput = document.createElement('input');
-    emailInput.classList.add('form__input');
-    emailInput.type = 'email';
-    emailInput.placeholder = 'Email';
-    emailInput.required = true;
-    emailInput.setAttribute('aria-label', 'Email');
-    signUpForm.appendChild(emailInput);
+    const nameInput = createInputWithLabel(signupForm, 'First Name', 'Name');
+    const lastNameInput = createInputWithLabel(signupForm, 'Last Name', 'Last Name');
+    const addressInput = createInputWithLabel(signupForm, 'Address', 'Address');
+    const postcodeInput = createInputWithLabel(signupForm, 'Postcode', 'Postcode');
+    const telephoneNumberInput = createInputWithLabel(signupForm, 'Telephone Number', 'Telephone Number');
+    const dateOfBirthInput = createInputWithLabel(signupForm,'Date of Birth', 'Date of Birth');
+    const subscriptionTypeInput = createInputWithLabel(signupForm,'Subscription Type', 'Subscription Type');
+    const paymentMethodInput = createInputWithLabel(signupForm,'Payment Method', 'Payment Method');
+    const passwordInput = createInputWithLabel(signupForm,'Password', 'Password', 'password');
+    const confirmPasswordInput = createInputWithLabel(signupForm,'Confirm Password', 'Confirm Password', 'password');
 
-    // Create password input
-    const passwordInput = document.createElement('input');
-    passwordInput.classList.add('form__input');
-    passwordInput.type = 'password';
-    passwordInput.placeholder = 'Password';
-    passwordInput.required = true;
-    passwordInput.setAttribute('aria-label', 'Password');
-    signUpForm.appendChild(passwordInput);
+    const signupButton = document.createElement('button');
+    signupButton.classList.add('form__submit');
+    signupButton.type = 'submit';
+    signupButton.textContent = 'Sign Up';
+    signupForm.appendChild(signupButton);
 
-    // Create confirm password input
-    const confirmPasswordInput = document.createElement('input');
-    confirmPasswordInput.classList.add('form__input');
-    confirmPasswordInput.type = 'password';
-    confirmPasswordInput.placeholder = 'Confirm Password';
-    confirmPasswordInput.required = true;
-    confirmPasswordInput.setAttribute('aria-label', 'Confirm Password');
-    signUpForm.appendChild(confirmPasswordInput);
+    const signupStatus = document.createElement('p');
+    signupStatus.textContent = 'current signup status: ';
+    formContainer.appendChild(signupStatus);
 
-    // Create submit button for sign up
-    const signUpButton = document.createElement('button');
-    signUpButton.classList.add('form__submit');
-    signUpButton.type = 'submit';
-    signUpButton.textContent = 'Sign Up';
-    signUpForm.appendChild(signUpButton);
-
-    // Append form to the main element
-    formContainer.appendChild(signUpForm);
+    formContainer.appendChild(signupForm);
     main.appendChild(formContainer);
 
-    // Add event listener to the sign up form
-    signUpForm.addEventListener('submit', function(event) {
+    signupForm.addEventListener('submit', async function(event) {
         event.preventDefault();
-        // Handle sign up form submission here
-    });
+      
+        // Get form data
+        const name = nameInput.value;
+        const lastName = lastNameInput.value;
+        const address = addressInput.value;
+        const postcode = postcodeInput.value;
+        const telephoneNumber = telephoneNumberInput.value;
+        const dateOfBirth = dateOfBirthInput.value;
+        const subscriptionType = subscriptionTypeInput.value;
+        const paymentMethod = paymentMethodInput.value;
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+        // Validate password and confirm password
+        if (password !== confirmPassword) {
+          signupStatus.textContent = 'Passwords do not match';
+          return;
+        }
+      
+        // Create request body
+        const requestBody = {
+          first_name: name,
+          last_name: lastName,
+          address: address,
+          postcode: postcode,
+          telephone_number: telephoneNumber,
+          date_of_birth: dateOfBirth,
+          subscription_type: subscriptionType,
+          payment_method: paymentMethod,
+          password: password
+        };
+      
+        // Make POST request to the server
+        try {
+          const response = await fetch('api/signup', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+          });
+      
+          const data = await response.json();
+      
+          if (data.success) {
+            // Signup was successful
+            signupStatus.textContent = 'Signup successful';
+          } else {
+            // Signup failed
+            const errorMessage = document.createElement('p');
+            errorMessage.textContent = 'Signup failed: ' + data.error;
+            errorMessage.setAttribute('class', 'error-message');
+      
+            // Add the error message to the top of the body
+            signupStatus.textContent = 'current signup status: ' + data.error;
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      });
+
+    const loginLink = document.createElement('p');
+    loginLink.textContent = 'Already have an account?  ';
+    const link = document.createElement('a');
+    link.href = '/login.html';
+    link.textContent = 'Log in';
+    loginLink.appendChild(link);
+
+    // Add the paragraph to the main element
+    formContainer.appendChild(loginLink);
+
+    main.appendChild(formContainer);
 }
 
-// Call the signup function on load
-window.addEventListener('load', pageload);
+signupUser();

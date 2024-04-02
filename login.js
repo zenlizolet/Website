@@ -91,7 +91,7 @@ async function loginUser() {
 
 
     const signupLink = document.createElement('p');
-    signupLink.textContent = 'No account yet?  ';
+    signupLink.textContent = 'No account yet? ';
     const link = document.createElement('a');
     link.href = '/signup.html'; 
     link.textContent = 'Sign up';
