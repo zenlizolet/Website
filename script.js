@@ -38,8 +38,8 @@ function createNavLeft() {
 function createNavRight() {
     var div = document.createElement('div');
     div.id = 'nav--right';
-    var pages = ['Catalog', ' Login'];
-    var links = ['catalog.html', 'login.html'];
+    var pages = ['Catalog', ' Login', 'Alex Test'];
+    var links = ['catalog.html', 'login.html', 'alextest.html'];
     return createNav(pages, links,div, 'nav-right');
 };
 
