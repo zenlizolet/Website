@@ -1,9 +1,10 @@
 var express = require('express');
+var path = require('path');
 var router = express.Router();
 
-/* GET catalog page. */
+/* GET author page. */
 router.get('/', function(req, res, next) {
-  res.send('Sequels page');
+  res.sendFile(path.join(__dirname, '../public/sequels.html'));
 });
 
 module.exports = router;

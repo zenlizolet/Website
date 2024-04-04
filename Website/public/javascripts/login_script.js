@@ -75,6 +75,14 @@ async function loginUser() {
                 // Add the new element to the top of the body
 
                 loginStatus.textContent = `Logged in as ${data.user.name}`;
+                
+                // Create a new list item to store the users name That I will put in the navbar right
+                const listItem = document.createElement('ul');
+                listItem.textContent = data.user.name;
+
+                const nav = document.querySelector('#nav--right .nav-right');
+                nav.appendChild(listItem);
+
             } else {
                // Login failed
                 const errorMessage = document.createElement('p');

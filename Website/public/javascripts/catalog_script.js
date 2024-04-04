@@ -1,3 +1,4 @@
+console.log("Catalog.js loaded");
 // Set the body id, used for styling
 document.body.setAttribute('id', 'catalog__body');
 
