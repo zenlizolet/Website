@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const sqlite3 = require('sqlite3').verbose();
+
+const session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var authorRouter = require('./routes/author');
@@ -37,6 +40,13 @@ app.use('/reviews', reviewsRouter);
 app.use('/sequels', sequelsRouter);
 app.use('/setting', settingRouter);
 app.use('/signup', signupRouter);
+
+let db = new sqlite3.Database('../database/identifier.sqlite', sqlite3.OPEN_READWRITE, (err) => {
+  if (err) {
+    console.error(err.message);
+  }
+  console.log('Connected to the SQLite database.');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

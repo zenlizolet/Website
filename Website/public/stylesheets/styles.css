@@ -130,7 +130,7 @@ nav li a:hover {
 
 /*css for the body*/
 #index__body{
-  background-image: url('images/the_wall.jpg');
+  background-image: url('../images/the_wall.jpg');
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center; 
@@ -161,7 +161,7 @@ tr:nth-child(even){
 
 /*css for author*/
 #author__body{
-  background-image: url('images/gods_wood.jpg'); 
+  background-image: url('../images/gods_wood.jpg'); 
   background-size: cover; 
   background-repeat: no-repeat; 
   background-position: center; 
@@ -211,7 +211,7 @@ tr:nth-child(even){
 
 /*css for the review page*/
 #reviews__body{
-  background-image: url('images/riverlands.jpg');
+  background-image: url('../images/riverlands.jpg');
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center; 
@@ -220,7 +220,7 @@ tr:nth-child(even){
 
 /*css for the setting page*/
 #setting__body{
-  background-image: url('images/kings_landing.jpg');
+  background-image: url('../images/kings_landing.jpg');
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center; 
@@ -296,7 +296,7 @@ tr:nth-child(even){
 /*css for houses page*/
 
 #houses__body{
-  background-image: url('images/essos.jpg');
+  background-image: url('../images/essos.jpg');
   background-size: cover; 
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -355,7 +355,7 @@ tr:nth-child(even){
 
 /*css for the sequels-page!*/
 #sequels__body{
-  background-image: url('images/braavos.png');
+  background-image: url('../images/braavos.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -401,7 +401,7 @@ tr:nth-child(even){
 
 /*css for the infopage*/
 #info__body{
-  background-image: url('images/dragon_stone.jpg');
+  background-image: url('../images/dragon_stone.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; 
@@ -447,7 +447,7 @@ tr:nth-child(even){
 
 /*css for the login page*/
 #login__body, #signup__body{
-  background-image: url('images/throneroom_cover.jpg');
+  background-image: url('../images/throneroom_cover.jpg');
   background-repeat: no-repeat;
   background-position: center; 
   background-attachment: fixed;
@@ -494,7 +494,7 @@ tr:nth-child(even){
 
 /*css for the catalog page*/
 #catalog__body{
-  background-image: url('images/library.jpg');
+  background-image: url('../images/library.jpg');
   background-repeat: no-repeat;
   background-position: center; 
   background-attachment: fixed;
