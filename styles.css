@@ -501,6 +501,16 @@ tr:nth-child(even){
   background-size: cover;
 }
 
+.navbar__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#page-display {
+  padding:0;
+}
+
 /* Responsive css */
 
 @media (min-width: 700px) {
