@@ -108,7 +108,7 @@ function displayBooks(){
         const reserveButton = document.createElement('button');
         reserveButton.textContent = 'Reserve';
         reserveButton.addEventListener('click', () => {
-                window.location.href = '/Website/login.html';
+                window.location.href = '../public/login.html';
                 alert(`Log in to reserve this book: ${book.title}`);
                 // alert(`Reservation for ${book.title}`);
         });
