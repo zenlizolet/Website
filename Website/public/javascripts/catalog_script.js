@@ -32,9 +32,12 @@ async function loadCatalog() {
         authorHeader.textContent = 'Author';
         const contentHeader = document.createElement('th');
         contentHeader.textContent = 'Content';
+        const imageHeader = document.createElement('th');
+        imageHeader.textContent = 'Image';
         tableHeader.appendChild(titleHeader);
         tableHeader.appendChild(authorHeader);
         tableHeader.appendChild(contentHeader);
+        tableHeader.appendChild(imageHeader);
         table.appendChild(tableHeader);
 
         books.forEach(book => {
@@ -45,6 +48,12 @@ async function loadCatalog() {
             authorCell.textContent = book.author;
             const contentCell = document.createElement('td');
             contentCell.textContent = book.content;
+            const imageCell = document.createElement('td');
+            const image = document.createElement('img');
+            image.src = book.image;
+            image.alt = book.title;
+            imageCell.appendChild(image);
+            tableRow.appendChild(imageCell);
             tableRow.appendChild(titleCell);
             tableRow.appendChild(authorCell);
             tableRow.appendChild(contentCell);

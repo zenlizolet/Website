@@ -112,3 +112,11 @@ async function loginUser() {
 }
 
 loginUser();
+
+window.addEventListener('load', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const book = urlParams.get('book');
+    if (book) {
+        alert(`Log in to reserve: ${book}`);
+    }
+});
