@@ -75,14 +75,9 @@ async function loginUser() {
                 // Add the new element to the top of the body
 
                 loginStatus.textContent = `Logged in as ${data.user.name}`;
-                
-                // Create a new list item to store the users name That I will put in the navbar right
-                const listItem = document.createElement('ul');
-                listItem.textContent = data.user.name;
-
-                const nav = document.querySelector('#nav--right .nav-right');
-                nav.appendChild(listItem);
-
+                var oldNavBar = document.querySelector('nav');
+                oldNavBar.parentNode.removeChild(oldNavBar);
+                createNavBar();
             } else {
                // Login failed
                 const errorMessage = document.createElement('p');
@@ -112,3 +107,11 @@ async function loginUser() {
 }
 
 loginUser();
+
+window.addEventListener('load', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const book = urlParams.get('book');
+    if (book) {
+        alert(`Log in to reserve: ${book}`);
+    }
+});

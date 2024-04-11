@@ -36,19 +36,75 @@ function createNavLeft() {
 };
 
 function createNavRight() {
-    var div = document.createElement('div');
-    div.id = 'nav--right';
-    var pages = ['Catalog', ' Login'];
-    var links = ['catalog.html', 'login.html'];
-    return createNav(pages, links,div, 'nav-right');
-};
+    return new Promise((resolve, reject) => {
+        var div = document.createElement('div');
+        div.id = 'nav--right';
+        var pages = ['Catalog'];
+        var links = ['catalog.html'];
+
+        // Create a new XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+
+        // Configure the request
+        xhr.open('GET', '/api/current-user', true);
+
+         // Set the callback for when the request completes
+         xhr.onload = function() {
+            if (this.status >= 200 && this.status < 400) {
+                var data = JSON.parse(this.response);
+
+                // Create an array of page names and links
+                pages = ['Catalog'];
+                links = ['catalog.html'];
+
+                if (data && data.name != undefined) {
+                    // If there is user data, add the user-specific pages and links
+                    pages.push('Log out');
+                    links.push('/logout');
+                    pages.push(data.name);
+                    links.push('alextest.html');
+                } else {
+                    // If there is no user data, add default pages and links
+                    pages.push('Log in');
+                    links.push('/login.html');
+                    pages.push('Sign up');
+                    links.push('/signup.html');
+                }
+
+                // Create the navigation bar and resolve the Promise with it
+                resolve(createNav(pages, links, div, 'nav-right'));
+                
+            } else {
+                // There was an error with the request
+                console.error('Server responded with status: ' + this.status);
+                reject(this.status);
+            }
+        };
+
+        // Set the callback for when the request fails
+        xhr.onerror = function() {
+            console.error('An error occurred while making the request.');
+            reject(new Error('An error occurred while making the request.'));
+        };
+
+        // Send the request
+        xhr.send();
+    });
+}
 
 function createNavBar() {
     var nav = document.createElement('nav');
-    nav.appendChild(createNavLeft());
-    nav.appendChild(createNavRight());
     var header = document.querySelector('header');
-    header.appendChild(nav);
+
+    // Append the left navigation bar
+    nav.appendChild(createNavLeft());
+
+    // Fetch the right navigation bar and append it
+    createNavRight().then(navRight => {
+        nav.appendChild(navRight);
+        header.appendChild(nav);
+    }).catch(error => console.error('Error:', error));
+    
 }
 
 

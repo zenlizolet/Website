@@ -21,6 +21,7 @@ async function loadCatalog() {
         // Fetch book data from the database
         const response = await fetch('/api/books');
         const books = await response.json();
+        console.log('Books:', books);
 
         const table = document.createElement('table');
         table.setAttribute('class', 'catalog__table');
@@ -32,11 +33,13 @@ async function loadCatalog() {
         authorHeader.textContent = 'Author';
         const contentHeader = document.createElement('th');
         contentHeader.textContent = 'Content';
+        const imageHeader = document.createElement('th');
+        imageHeader.textContent = 'Image';
         tableHeader.appendChild(titleHeader);
         tableHeader.appendChild(authorHeader);
         tableHeader.appendChild(contentHeader);
+        tableHeader.appendChild(imageHeader);
         table.appendChild(tableHeader);
-
         books.forEach(book => {
             const tableRow = document.createElement('tr');
             const titleCell = document.createElement('td');
@@ -45,6 +48,13 @@ async function loadCatalog() {
             authorCell.textContent = book.author;
             const contentCell = document.createElement('td');
             contentCell.textContent = book.content;
+            const imageCell = document.createElement('td');
+            const image = document.createElement('img');
+            console.log('Book image:', book.image);
+            image.src = book.image;
+            image.alt = book.title;
+            imageCell.appendChild(image);
+            tableRow.appendChild(imageCell);
             tableRow.appendChild(titleCell);
             tableRow.appendChild(authorCell);
             tableRow.appendChild(contentCell);
