@@ -38,7 +38,21 @@ function createNavLeft() {
 function createNavRight() {
     var div = document.createElement('div');
     div.id = 'nav--right';
-    var pages = ['Catalog', ' Login', 'Alex Test'];
+    var pages = ['Catalog', 'Login'];
+
+    // Fetch the current user's name from the server
+    fetch('/api/current-user')
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            console.error(data.error);
+        } else {
+            // If the request was successful, set the user's name in the nav bar
+            pages.push(data.name);
+        }
+    })
+    .catch(error => console.error('Error:', error));
+    
     var links = ['catalog.html', 'login.html', 'alextest.html'];
     return createNav(pages, links,div, 'nav-right');
 };
