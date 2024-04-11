@@ -62,7 +62,7 @@ function createNavRight() {
                     pages.push('Log out');
                     links.push('/logout');
                     pages.push(data.name);
-                    links.push('alextest.html');
+                    links.push('user.html');
                 } else {
                     // If there is no user data, add default pages and links
                     pages.push('Log in');
