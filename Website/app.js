@@ -58,7 +58,9 @@ let db = new sqlite3.Database('database/identifier.sqlite', sqlite3.OPEN_READWRI
   if (err) {
     console.error(err.message);
   }
-  console.log('Connected to the SQLite database.');
+  else{
+    console.log('Connected to the SQLite database.');
+  }
 });
 
 // define some of the API routes
@@ -76,7 +78,7 @@ app.get('/api/books', (req, res) => {
       if (err) {
           throw err;
       }
-      console.log(rows);
+      //console.log(rows);
       res.json(rows);
   });
 });
@@ -101,13 +103,25 @@ app.post('/api/login', (req, res) => {
     if (!row || row.password !== password) {
       return res.status(401).json({ error: 'Invalid username or password' });
     }
+    console.log('User ID:', row.user_id);
+    console.log('User name:', row.first_name);
 
     // Store user's ID in the session
-    req.session.userId = row.id;
+    req.session.userId = row.user_id;
     req.session.name = row.first_name;
 
-    res.json({ success: true, message: 'Login successful', user: { id: row.id, name: row.first_name } });
+    res.json({ success: true, message: 'Login successful', user: { id: row.user_id, name: row.first_name } });
 
+  });
+});
+
+app.get('/logout', function(req, res) {
+  req.session.destroy(function(err) {
+      if (err) {
+          console.log(err);
+      } else {
+          res.redirect('login.html')
+      }
   });
 });
 
@@ -140,7 +154,7 @@ app.post('/api/signup', (req, res) => {
       // Store user's ID in the session
       req.session.userId = this.lastID;
 
-      res.json({ success: true, message: 'Signup successful', user: { id: this.lastID, name: first_name } });
+      return res.json({ success: true, message: 'Signup successful', user: { id: this.lastID, name: first_name } });
     });
   });
 });
@@ -153,13 +167,14 @@ app.post('/api/signup', (req, res) => {
 */
 app.get('/api/current-user', (req, res) => {
   if (!req.session.userId) {
-    // If there's no user ID in the session, return an error
-    return res.status(401).json({ error: 'Not authenticated' });
+    // If there's no user ID in the session, return undefined
+    return res.json({ name: undefined});
   }
 
   // Get the user from the database
-  db.get('SELECT * FROM user WHERE id = ?', [req.session.userId], (err, row) => {
+  db.get('SELECT * FROM user WHERE user_id = ?', [req.session.userId], (err, row) => {
     if (err) {
+      console.log('Database error:', err.message);
       return res.status(500).json({ error: err.message });
     }
 
@@ -169,7 +184,7 @@ app.get('/api/current-user', (req, res) => {
     }
 
     // Return just the user's name since that is the only thing we need right now
-    res.json({ name: row.username });
+    return res.json({ name: row.first_name });
   });
 });
 

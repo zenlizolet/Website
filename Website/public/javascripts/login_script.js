@@ -75,7 +75,9 @@ async function loginUser() {
                 // Add the new element to the top of the body
 
                 loginStatus.textContent = `Logged in as ${data.user.name}`;
-
+                var oldNavBar = document.querySelector('nav');
+                oldNavBar.parentNode.removeChild(oldNavBar);
+                createNavBar();
             } else {
                // Login failed
                 const errorMessage = document.createElement('p');
