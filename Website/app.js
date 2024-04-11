@@ -171,7 +171,9 @@ app.get('/api/current-user', (req, res) => {
     return res.json({ name: undefined});
   }
 
-  // Get the user from the database
+  //TODO for the users page we might want to expand this, to include other user information
+
+  // Get the user from the database 
   db.get('SELECT * FROM user WHERE user_id = ?', [req.session.userId], (err, row) => {
     if (err) {
       console.log('Database error:', err.message);
@@ -203,5 +205,4 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 module.exports = app;
