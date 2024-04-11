@@ -53,8 +53,9 @@ async function signupUser() {
     signupForm.appendChild(signupButton);
 
     const signupStatus = document.createElement('p');
-    signupStatus.textContent = 'current signup status: ';
+    signupStatus.setAttribute('id', 'status__message');
     formContainer.appendChild(signupStatus);
+
 
     formContainer.appendChild(signupForm);
     main.appendChild(formContainer);
@@ -112,9 +113,6 @@ async function signupUser() {
             const errorMessage = document.createElement('p');
             errorMessage.textContent = 'Signup failed: ' + data.error;
             errorMessage.setAttribute('class', 'error-message');
-      
-            // Add the error message to the top of the body
-            signupStatus.textContent = 'current signup status: ' + data.error;
           }
         } catch (error) {
           console.error('Error:', error);

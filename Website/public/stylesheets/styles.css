@@ -453,6 +453,10 @@ tr:nth-child(even){
   background-attachment: fixed;
   background-size: cover;
 }
+#status__message{
+  text-align: left;
+  color: #963027;
+}
 
 .form__container{
   background-color: #1a1511;
@@ -548,6 +552,30 @@ h1.catalog__title{
 }
 .summary {
   display: none;
+}
+
+/*css for the userpage*/
+#user__body{
+  background-image: url('../images/field.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
+  background-attachment: fixed;
+}
+
+/*css for the errorpage*/
+#error__body{
+  background-image: url(../images/trees.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
+  background-attachment: fixed;
+}
+
+#explosion{
+  width:100%;
+  height:auto;
+
 }
 
 /* Responsive css */

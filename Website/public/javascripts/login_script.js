@@ -38,7 +38,7 @@ async function loginUser() {
     loginForm.appendChild(loginButton);
 
     const loginStatus = document.createElement('p');
-    loginStatus.textContent = 'current login status: ';
+    loginStatus.setAttribute('id', 'status__message');
     formContainer.appendChild(loginStatus);
 
     formContainer.appendChild(loginForm);
