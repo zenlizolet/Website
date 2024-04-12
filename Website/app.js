@@ -8,16 +8,17 @@ const sqlite3 = require('sqlite3').verbose();
 
 const session = require('express-session');
 
-var indexRouter = require('./routes/index');
-var authorRouter = require('./routes/author');
-var catalogRouter = require('./routes/catalog');
-var housesRouter = require('./routes/houses');
-var infoRouter = require('./routes/info');
-var loginRouter = require('./routes/login');
-var reviewsRouter = require('./routes/reviews');
-var sequelsRouter = require('./routes/sequels');
-var settingRouter = require('./routes/setting');
-var signupRouter = require('./routes/signup');
+//set up different routers for each page
+var indexRouter = require('./routes/index.js');
+var authorRouter = require('./routes/author.js');
+var catalogRouter = require('./routes/catalog.js');
+var housesRouter = require('./routes/houses.js');
+var infoRouter = require('./routes/info.js');
+var loginRouter = require('./routes/login.js');
+var reviewsRouter = require('./routes/reviews.js');
+var sequelsRouter = require('./routes/sequels.js');
+var settingRouter = require('./routes/setting.js');
+var signupRouter = require('./routes/signup.js');
 
 var app = express();
 app.use(cookieParser());
