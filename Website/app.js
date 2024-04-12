@@ -208,12 +208,11 @@ app.get('/api/current-user', (req, res) => {
     // If there's no user ID in the session, return undefined
     return res.json({ name: undefined});
   }
-
-
   //TODO for the users page we might want to expand this, to include other user information
 
   // Get the user from the database 
   db.get('SELECT * FROM user WHERE user_id = ?', [req.session.userId], (err, row) => {
+    console.log("HALLLLLLOOOOOOOO");
     if (err) {
       console.log('Database error:', err.message);
       return res.status(500).json({ error: err.message });
@@ -223,9 +222,9 @@ app.get('/api/current-user', (req, res) => {
       // If there's no user with the given ID, return an error
       return res.status(404).json({ error: 'User not found' });
     }
-
     // Return just the user's name since that is the only thing we need right now
-    return res.json({ name: row.first_name });
+    return res.json({user_id:row.user_id, name: row.first_name, last_name: row.last_name,address:row.address,postcode:row.postcode,telephone_number:row.telephone_number,date_of_birth: row.date_of_birth,subscription_type:row.subscription_type,payment_method:row.payment_method });
+    
   });
 });
 
