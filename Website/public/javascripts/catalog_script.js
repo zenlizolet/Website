@@ -41,7 +41,6 @@ async function loadCatalog() {
         tableHeader.appendChild(imageHeader);
         table.appendChild(tableHeader);
         books.forEach(book => {
-            const tableRow = document.createElement('tr');
             const titleCell = document.createElement('td');
             titleCell.textContent = book.title;
             const authorCell = document.createElement('td');
