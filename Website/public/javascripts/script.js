@@ -1,15 +1,15 @@
 // This function will run when the page loads
 window.onload = function () {
-    console.log("The page has loaded!");
+    
     url = window.location.href;
     createNavBar();
     createFooter();
 
-    if (url.endsWith('info.html')) {
+    if (url.endsWith('info')) {
         createInfoPage();
     }
 
-
+    console.log("The page has loaded!");
 }
 
 function createNav(pages, links, div ,ulClass) {
@@ -31,7 +31,7 @@ function createNavLeft() {
     var div = document.createElement('div');
     div.id = 'nav--left';
     var pages = ['Homepage', 'Author', 'Reviews', 'Setting', 'Houses', 'Sequels', 'Dynamic Page'];
-    var links = ['index.html', 'author.html', 'reviews.html', 'setting.html', 'houses.html', 'sequels.html', 'info.html'];
+    var links = ['index', 'author', 'reviews', 'setting', 'houses', 'sequels', 'info'];
     return createNav(pages, links,div, 'nav-left');
 };
 
