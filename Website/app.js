@@ -5,6 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const sqlite3 = require('sqlite3').verbose();
+const crypto = require('crypto');
 
 const session = require('express-session');
 
@@ -96,12 +97,15 @@ It responds with a JSON object containing a success message and the user's ID an
 app.post('/api/login', (req, res) => {
   const { name, password } = req.body;
 
+  // Hash the password
+  const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
+
   db.get('SELECT * FROM user WHERE first_name = ?', [name], (err, row) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
 
-    if (!row || row.password !== password) {
+    if (!row || row.password !== hashedPassword) {
       return res.status(401).json({ error: 'Invalid username or password' });
     }
     console.log('User ID:', row.user_id);
@@ -136,6 +140,15 @@ Finally, it responds with a JSON object containing a success message and the new
 app.post('/api/signup', (req, res) => {
   const { first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method, password } = req.body;
 
+  // Hash the password and other sensitive information
+  const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
+  const hashedAddress = crypto.createHash('sha256').update(address).digest('hex');
+  const hashedPostcode = crypto.createHash('sha256').update(postcode).digest('hex');
+  const hashedTelephoneNumber = crypto.createHash('sha256').update(telephone_number).digest('hex');
+  const hashedDateOfBirth = crypto.createHash('sha256').update(date_of_birth).digest('hex');
+  const hashedSubscriptionType = crypto.createHash('sha256').update(subscription_type).digest('hex');
+  const hashedPaymentMethod = crypto.createHash('sha256').update(payment_method).digest('hex');
+
   // Check if user already exists
   db.get('SELECT * FROM user WHERE first_name = ?', [first_name], (err, row) => {
     if (err) {
@@ -147,7 +160,7 @@ app.post('/api/signup', (req, res) => {
     }
 
     // Insert new user
-    db.run('INSERT INTO user (password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', [password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method], function(err) {
+    db.run('INSERT INTO user (password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', [hashedPassword, first_name, last_name, hashedAddress, hashedPostcode, hashedTelephoneNumber, hashedDateOfBirth, hashedSubscriptionType, hashedPaymentMethod], function(err) {
       if (err) {
         return res.status(500).json({ error: err.message });
       }
@@ -160,6 +173,30 @@ app.post('/api/signup', (req, res) => {
   });
 });
 
+
+
+/** TODO DELETE THIS ROUTE THIS DELETES A USER FROM THE DATABASE, USED FOR THE HASHING VALUES TESTING
+*/
+app.get('/delete/:userId', (req, res) => {
+  const userId = req.params.userId;
+/** TODO DELETE THIS ROUTE THIS DELETES A USER FROM THE DATABASE, USED FOR THE HASHING VALUES TESTING
+*/
+  // Delete the user from the database
+  db.run('DELETE FROM user WHERE user_id = ?', [userId], function(err) {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+/** TODO DELETE THIS ROUTE THIS DELETES A USER FROM THE DATABASE, USED FOR THE HASHING VALUES TESTING
+*/
+    // Check if any rows were affected
+    if (this.changes === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+/** TODO DELETE THIS ROUTE THIS DELETES A USER FROM THE DATABASE, USED FOR THE HASHING VALUES TESTING
+*/
+    return res.json({ success: true, message: 'User deleted successfully' });
+  });
+});
 /** This API route returns the name of the current user from the session.
  It checks if there is a user ID in the session. If not, it returns an error.
  It retrieves the user from the database based on the user ID.
@@ -171,11 +208,11 @@ app.get('/api/current-user', (req, res) => {
     // If there's no user ID in the session, return undefined
     return res.json({ name: undefined});
   }
-
   //TODO for the users page we might want to expand this, to include other user information
 
   // Get the user from the database 
   db.get('SELECT * FROM user WHERE user_id = ?', [req.session.userId], (err, row) => {
+    console.log("HALLLLLLOOOOOOOO");
     if (err) {
       console.log('Database error:', err.message);
       return res.status(500).json({ error: err.message });
@@ -185,9 +222,9 @@ app.get('/api/current-user', (req, res) => {
       // If there's no user with the given ID, return an error
       return res.status(404).json({ error: 'User not found' });
     }
-
     // Return just the user's name since that is the only thing we need right now
-    return res.json({ name: row.first_name });
+    return res.json({user_id:row.user_id, name: row.first_name, last_name: row.last_name,address:row.address,postcode:row.postcode,telephone_number:row.telephone_number,date_of_birth: row.date_of_birth,subscription_type:row.subscription_type,payment_method:row.payment_method });
+    
   });
 });
 
@@ -206,4 +243,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 module.exports = app;
