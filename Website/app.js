@@ -54,13 +54,14 @@ app.use('/sequels', sequelsRouter);
 app.use('/setting', settingRouter);
 app.use('/signup', signupRouter);
 
-let db = new sqlite3.Database('database/identifier.sqlite', sqlite3.OPEN_READWRITE, (err) => {
+let db = new sqlite3.Database('database/newidentifier.sqlite', sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
     console.error(err.message);
   }
   else{
     console.log('Connected to the SQLite database.');
   }
+ 
 });
 
 // define some of the API routes
