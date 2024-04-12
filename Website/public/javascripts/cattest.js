@@ -55,7 +55,7 @@ async function displayBooks(){
         bookDiv.appendChild(title);
 
         const summary = document.createElement('p');
-        summary.textContent = book.summary;
+        summary.textContent = book.content;
         summary.classList.add('summary');
         bookDiv.appendChild(summary);
 
