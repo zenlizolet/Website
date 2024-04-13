@@ -64,7 +64,7 @@ async function displayBooks(){
         reserveButton.addEventListener('click', () => {
             if (confirm(`Reserve this book: ${book.title}`)) {
                 // check if user is logged in PLACED HERE
-                window.location.href = '../public/login.html?book=' + encodeURIComponent(book.title);
+                window.location.href = '../public/reserve.html?book=' + encodeURIComponent(book.title);
             }
             else {
                 console.log('Operation cancelled');

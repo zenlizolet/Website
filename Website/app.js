@@ -173,6 +173,33 @@ app.post('/api/signup', (req, res) => {
   });
 });
 
+app.post('/api/reserve', (req, res) => {
+  const { user_id, book_id, reservation_date} = req.body;
+
+  // Check if book already reserved
+  db.get('SELECT * FROM reservation WHERE book_id = ?', [book_id], (err, row) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    if (row) {
+      return res.status(400).json({ error: 'book already taken reserved' });
+    }
+
+    // Insert new user
+    db.run('INSERT INTO reservation (user_id, book_id, reservation_date) VALUES (?, ?, ?)', [ user_id, book_id, reservation_date], function(err) {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+
+      // Store user's ID in the session
+      req.session.reservation_id = this.lastID;
+
+      return res.json({ success: true, message: 'Reserved!', book: { id: this.lastID, name: book_title } });
+    });
+  });
+});
+
 
 
 /** TODO DELETE THIS ROUTE THIS DELETES A USER FROM THE DATABASE, USED FOR THE HASHING VALUES TESTING
