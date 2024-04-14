@@ -4,8 +4,6 @@
 
 
 # General description
-A brief explanation of your web-site, the structure of your application, including every content file and every code file, the structure of your database.
-
 Library catalog GOTBooks, offering the best fantasy books.
 
 Using dependencies: express, ajax, cookie-parser, debug, ejs, express-session, http-errors, jade, morgan, sqlite3, uuid.
@@ -18,6 +16,7 @@ Website is inside Website map, so run cd Website. Then npm start, to get start t
 
 Images are a bit low quality, but that does not really matter.
 
+Database contains user, book and reservation info, on catalog page everything is pulled from there and there is a  check if the user is logged in or not, and reservations are added in the database, as well as new accounts. 
 # Logins and passwords of all registered users.
 Username : Password
 
