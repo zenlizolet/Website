@@ -1,5 +1,5 @@
 # Group ID 56
-## Alexander Le, Jieni Ding, Liselot Ankone.
+Alexander Le, Jieni Ding, Liselot Ankone.
 ## http://webtech.science.uu.nl/group56
 
 
