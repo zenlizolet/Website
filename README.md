@@ -31,6 +31,7 @@ Sergey : test3
 yuh : yuh
 
 # The SQL definition of your database (the CREATE TABLE statements).
+CREATE TABLE statements
 ``` SQLite
 CREATE TABLE user(
 user_id INTEGER (256) PRIMARY KEY AUTOINCREMENT,
@@ -67,6 +68,7 @@ reservation_id INTEGER PRIMARY KEY AUTOINCREMENT,
 );
 ```
 
+INSERT INTO statements
 ``` SQLite
 INSERT INTO
     Book (title, author, content, image)
