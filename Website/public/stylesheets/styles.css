@@ -513,13 +513,13 @@ tr:nth-child(even){
 }
 
 img.catalog__logo {
-  width: 60%; /* Adjust the width of the logo */
-  height: auto; /* Set the height to auto */
+  width: 60%;
+  height: auto;
   padding: 2rem 2rem 1rem 2rem;
 }
 
 h1.catalog__title{
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 2rem;
   font-family: "Times New Roman", Times, serif;
 }
@@ -568,6 +568,20 @@ h1.catalog__title{
   background-attachment: fixed;
 }
 
+.full-name {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.filler-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.user-id {
+  font-size: 1.5rem;
+}
+
 /*css for the errorpage*/
 #error__body{
   background-image: url(../images/trees.png);
@@ -606,6 +620,10 @@ h1.catalog__title{
   width: 80%;
 }
 
+.modal-content p {
+  font-size: 20px;
+}
+
 .close {
   color: #aaaaaa;
   float: right;
@@ -624,7 +642,7 @@ h1.catalog__title{
 @media (min-width: 700px) {
   /* Styles for desktop */
   main{
-    width: 60%;
+    width: 100%;
   }
 
   #login__main, #signup__main{
@@ -678,6 +696,9 @@ h1.catalog__title{
   #nav-right ul {
     margin-left: auto;
   }
+  main{
+    width: 80%;
+  }
 }
 
 @media (min-width:1024px){
@@ -687,6 +708,10 @@ h1.catalog__title{
     align-items:center;
     justify-content: space-between;
   }
+
+  main{
+    width: 60%;
+  }
 }
 
 @media (max-width: 699px) and (min-width: 500px) {
@@ -694,10 +719,22 @@ h1.catalog__title{
     display: flex;
     flex-wrap: wrap;
   }
+  .modal-content p {
+    font-size: 18px;
+  }
+  nav ul {
+    display: block;
+  }
+  main {
+    width: 100%;
+  }
 }
 
-/* Styles for mobile */
+
 @media (max-width: 499px) {
+  .modal-content p {
+    font-size: 18px;
+  }
   nav ul {
     display: block;
   }

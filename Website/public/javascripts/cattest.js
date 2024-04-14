@@ -17,7 +17,7 @@ logo.setAttribute('class', 'catalog__logo');
 catalogContainer.appendChild(logo);
 
 const title = document.createElement('h1');
-title.textContent = 'Click on a book to see more information';
+title.textContent = 'The best selection of fantasy books! Click on a book to see more information.';
 title.setAttribute('class', 'catalog__title');
 catalogContainer.appendChild(title);
 
@@ -25,7 +25,6 @@ const book__container = document.createElement('div');
 book__container.setAttribute('id', 'book__container');
 catalogContainer.appendChild(book__container);
 
-// Function to fetch book data from the database
 async function fetchBooks() {
     try {
         const response = await fetch('/api/books');
@@ -54,7 +53,6 @@ async function displayBooks(){
         title.textContent = book.title;
         bookDiv.appendChild(title);
 
-        // Create a new paragraph for the author
         const author = document.createElement('p');
         author.textContent = book.author; // Assuming the book object has an 'author' property
         bookDiv.appendChild(author);
@@ -81,16 +79,13 @@ async function displayBooks(){
 }
 
 function createModal(book) {
-    // Create modal div
     const modal = document.createElement('div');
     modal.setAttribute('id', 'bookModal');
     modal.setAttribute('class', 'modal');
 
-    // Create modal content div
     const modalContent = document.createElement('div');
     modalContent.setAttribute('class', 'modal-content');
 
-    // Create close button
     const closeButton = document.createElement('span');
     closeButton.setAttribute('class', 'close');
     closeButton.textContent = '\u00D7';
@@ -100,21 +95,17 @@ function createModal(book) {
         document.body.removeChild(modal); // Remove the modal from the body
     }
 
-    // Create title element
     const bookTitle = document.createElement('h2');
     bookTitle.textContent = book.title;
 
-    // Create image element
     const bookImage = document.createElement('img');
     bookImage.src = book.image;
     bookImage.alt = book.title;
 
-    // Create paragraph to hold the book content
     const bookContent = document.createElement('p');
     bookContent.setAttribute('id', 'bookContent');
     bookContent.textContent = book.content;
 
-    // Create reserve button
     const reserveButton = document.createElement('button');
     reserveButton.textContent = 'Reserve';
     reserveButton.addEventListener('click', () => {
@@ -136,7 +127,7 @@ function createModal(book) {
     document.body.appendChild(modal);
 
     window.addEventListener('click', function(event) {
-        if (event.target == modal) {
+        if (event.target === modal) {
             modal.style.display = "none";
             document.body.removeChild(modal); // Remove the modal from the body
         }
