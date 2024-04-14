@@ -15,6 +15,7 @@ Sergey : test3
 yuh : yuh
 
 # The SQL definition of your database (the CREATE TABLE statements).
+``` SQLite
 CREATE TABLE Book(
  Book_id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(256) NOT NULL,
@@ -744,7 +745,9 @@ VALUES
 Now Essun must pursue the wreckage of her family through a deadly, dying land. Without sunlight, clean water, or arable land, and with limited stockpiles of supplies, there will be war all across the Stillness: a battle royale of nations not for power or territory, but simply for the basic resources necessary to get through the long dark night. Essun does not care if the world falls apart around her. She’ll break it herself, if she must, to save her daughter.',
         '/books/book51.jpg'
     );
+```
 
+``` SQLite
 CREATE TABLE reservation(
 reservation_id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
@@ -795,7 +798,9 @@ VALUES
 (3,
  21,
  01012001);
+```
 
+``` SQLite
 CREATE TABLE user(
 user_id INTEGER (256) PRIMARY KEY AUTOINCREMENT,
     password VARCHAR(30) NOT NULL,
@@ -882,4 +887,4 @@ VALUES
 UPDATE user
 SET subscription_type = 'Student'
 WHERE user_id = 3;
-
+```
