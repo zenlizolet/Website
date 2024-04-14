@@ -39,7 +39,9 @@ CREATE TABLE Book(
     content TEXT NOT NULL,
     image VARCHAR(256) NOT NULL
 );
+```
 
+``` SQLite
 INSERT INTO
     Book (title, author, content, image)
 VALUES
@@ -772,7 +774,9 @@ reservation_id INTEGER PRIMARY KEY AUTOINCREMENT,
     CONSTRAINT userid_fk FOREIGN KEY(user_id) REFERENCES user(user_id),
     CONSTRAINT bookid_fk FOREIGN KEY(book_id) REFERENCES book(book_id)
 );
+```
 
+``` SQLite
 INSERT INTO
     reservation(user_id, book_id, reservation_date)
 VALUES
@@ -829,7 +833,9 @@ user_id INTEGER (256) PRIMARY KEY AUTOINCREMENT,
     subscription_type VARCHAR(256) NOT NULL,
     payment_method VARCHAR(256) NOT NULL
 );
+```
 
+``` SQLite
 INSERT INTO
     user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
 VALUES
