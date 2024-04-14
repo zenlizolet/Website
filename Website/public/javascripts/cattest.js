@@ -37,68 +37,6 @@ async function fetchBooks() {
     }
 }
 
-function createModal(book) {
-    // Create modal div
-    const modal = document.createElement('div');
-    modal.setAttribute('id', 'bookModal');
-    modal.setAttribute('class', 'modal');
-
-    // Create modal content div
-    const modalContent = document.createElement('div');
-    modalContent.setAttribute('class', 'modal-content');
-
-    // Create close button
-    const closeButton = document.createElement('span');
-    closeButton.setAttribute('class', 'close');
-    closeButton.textContent = '\u00D7';
-
-    // Add click event to close the modal
-    closeButton.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // Create title element
-    const bookTitle = document.createElement('h2');
-    bookTitle.textContent = book.title;
-
-    // Create image element
-    const bookImage = document.createElement('img');
-    bookImage.src = book.image;
-    bookImage.alt = book.title;
-
-    // Create paragraph to hold the book content
-    const bookContent = document.createElement('p');
-    bookContent.setAttribute('id', 'bookContent');
-    bookContent.textContent = book.content;
-
-    // Create reserve button
-    const reserveButton = document.createElement('button');
-    reserveButton.textContent = 'Reserve';
-    reserveButton.addEventListener('click', () => {
-        if (confirm(`Reserve this book: ${book.title}`)) {
-            window.location.href = '../public/reserve.html?book=' + encodeURIComponent(book.title);
-        }
-        else {
-            console.log('Operation cancelled');
-        }
-    });
-
-    // Append elements to their parents
-    modalContent.appendChild(closeButton);
-    modalContent.appendChild(bookTitle);
-    modalContent.appendChild(bookImage);
-    modalContent.appendChild(bookContent);
-    modalContent.appendChild(reserveButton);
-    modal.appendChild(modalContent);
-    document.body.appendChild(modal);
-
-    window.addEventListener('click', function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    });
-}
-
 async function displayBooks(){
     books = await fetchBooks();
     book__container.innerHTML = "";
@@ -140,6 +78,69 @@ async function displayBooks(){
 
         book__container.appendChild(bookDiv);
     }
+}
+
+function createModal(book) {
+    // Create modal div
+    const modal = document.createElement('div');
+    modal.setAttribute('id', 'bookModal');
+    modal.setAttribute('class', 'modal');
+
+    // Create modal content div
+    const modalContent = document.createElement('div');
+    modalContent.setAttribute('class', 'modal-content');
+
+    // Create close button
+    const closeButton = document.createElement('span');
+    closeButton.setAttribute('class', 'close');
+    closeButton.textContent = '\u00D7';
+
+    closeButton.onclick = function() {
+        modal.style.display = "none";
+        document.body.removeChild(modal); // Remove the modal from the body
+    }
+
+    // Create title element
+    const bookTitle = document.createElement('h2');
+    bookTitle.textContent = book.title;
+
+    // Create image element
+    const bookImage = document.createElement('img');
+    bookImage.src = book.image;
+    bookImage.alt = book.title;
+
+    // Create paragraph to hold the book content
+    const bookContent = document.createElement('p');
+    bookContent.setAttribute('id', 'bookContent');
+    bookContent.textContent = book.content;
+
+    // Create reserve button
+    const reserveButton = document.createElement('button');
+    reserveButton.textContent = 'Reserve';
+    reserveButton.addEventListener('click', () => {
+        if (confirm(`Reserve this book: ${book.title}`)) {
+            window.location.href = '../public/reserve.html?book=' + encodeURIComponent(book.title);
+        }
+        else {
+            console.log('Operation cancelled');
+        }
+    });
+
+    // Append elements to their parents
+    modalContent.appendChild(closeButton);
+    modalContent.appendChild(bookTitle);
+    modalContent.appendChild(bookImage);
+    modalContent.appendChild(bookContent);
+    modalContent.appendChild(reserveButton);
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+
+    window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            document.body.removeChild(modal); // Remove the modal from the body
+        }
+    });
 }
 
 // Navigation bar for the catalog
