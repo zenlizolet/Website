@@ -41,7 +41,7 @@ fetch('/api/current-user')
 
         usernameElement.textContent = username;
         const fullNameElement = document.createElement('p');
-        fullNameElement.textContent = "Welcome " + first_name + " " +last_name + "!";
+        fullNameElement.textContent = "Welcome " + first_name + " " + last_name + "!";
         fullNameElement.classList.add('full-name');
         mainElement.appendChild(fullNameElement);
 
