@@ -260,7 +260,7 @@ app.post('/api/reserve', (req, res) => {
 
           if (row) {
             console.log("hier4")
-              return res.status(400).json({ error: err.message });
+              return res.status(404).json({ error: 'book already taken' });
           }
 
           // Insert new reservation
