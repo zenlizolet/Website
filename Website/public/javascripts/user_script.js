@@ -35,7 +35,7 @@ fetch('/api/current-user')
         // Create elements to display user info
         const usernameElement = document.createElement('h1');
         mainElement.appendChild(usernameElement);
-        const fillertext = document.createElement('p');
+        
 
         usernameElement.textContent = username;
         const fullNameElement = document.createElement('p');
@@ -77,6 +77,7 @@ fetch('/api/current-user')
         const paymentElement = document.createElement('p');
         paymentElement.textContent = "Payment Method: " +payment_method;
         mainElement.appendChild(paymentElement);
+
 
         fillertext.textContent = "Here you can find the information of your reservations";
         fillertext.classList.add('filler-text');
