@@ -587,6 +587,10 @@ h1.catalog__title{
   font-style: italic;
 }
 
+.user-credentials {
+  word-break: break-all;
+}
+
 /*css for the errorpage*/
 #error__body{
   background-image: url(../images/trees.png);

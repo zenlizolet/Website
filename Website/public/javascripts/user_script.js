@@ -81,6 +81,14 @@ fetch('/api/current-user')
         fillertext.textContent = "Here you can find the information of your reservations";
         fillertext.classList.add('filler-text');
         mainElement.appendChild(fillertext);
+
+        addressElement.classList.add('user-credentials');
+        postcodeElement.classList.add('user-credentials');
+        telephoneElement.classList.add('user-credentials');
+        dobElement.classList.add('user-credentials');
+        subscriptionElement.classList.add('user-credentials');
+        paymentElement.classList.add('user-credentials');
+
         // Fetch reservation info
         fetch('api/user-reservations')
             .then(response => {
