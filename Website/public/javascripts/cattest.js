@@ -1,6 +1,5 @@
 let pageIndex = 0;
 const booksPerPage = 9;
-let currentSummary = null;
 
 // Set the body id, used for styling
 document.body.setAttribute('id', 'catalog__body');
