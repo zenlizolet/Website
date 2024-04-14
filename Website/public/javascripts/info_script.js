@@ -1,3 +1,9 @@
+// This file, info_script.js, is responsible for creating an information page for a book.
+// It fetches and displays detailed information about a book, including the title, genre, year of publication, author, publisher, and cover image.
+// It also provides a detailed plot summary with different plot points.
+// Additionally, it includes an interactive feature where users can "kill" a character (King Joffrey) from the book, and it keeps track of how many times the character has been "killed".
+// The information page is created when the window loads.
+
 let count = 1;
 class Person {
     #name;

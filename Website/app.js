@@ -283,7 +283,6 @@ app.get('/api/user-reservations', (req, res) => {
     }
 
     // Return reservations with book titles
-    console.log(rows);
     return res.json(rows);
   });
 });
@@ -304,5 +303,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//db.close();
+db.close;
 module.exports = app;

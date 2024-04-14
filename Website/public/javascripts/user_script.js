@@ -35,7 +35,7 @@ fetch('/api/current-user')
         // Create elements to display user info
         const usernameElement = document.createElement('h1');
         mainElement.appendChild(usernameElement);
-        //const fillertext = document.createElement('p');
+        const fillertext = document.createElement('p');
 
         usernameElement.textContent = username;
         const fullNameElement = document.createElement('p');
@@ -81,12 +81,13 @@ fetch('/api/current-user')
         fillertext.textContent = "Here you can find the information of your reservations";
         fillertext.classList.add('filler-text');
         mainElement.appendChild(fillertext);
-        const fillertext = document.createElement('p');
-        fillertext.textContent = "Here you can find the information of your reservations";
-        fillertext.classList.add('filler-text');
-        mainElement.appendChild(fillertext);
 
-     
+        addressElement.classList.add('user-credentials');
+        postcodeElement.classList.add('user-credentials');
+        telephoneElement.classList.add('user-credentials');
+        dobElement.classList.add('user-credentials');
+        subscriptionElement.classList.add('user-credentials');
+        paymentElement.classList.add('user-credentials');
 
         // Fetch reservation info
         fetch('api/user-reservations')
@@ -104,18 +105,17 @@ fetch('/api/current-user')
 
                     reservations.forEach(reservation => {
                         var reservation_id = reservation.reservation_id;
-                        var book_title = reservation.title;
-
+                        var book_title = reservation.title; // Access the book_title property
+                    
                         const reservationIdElement = document.createElement('p');
                         reservationIdElement.textContent = "Reservation ID: " + reservation_id;
                         reservationIdElement.classList.add('reservation-id');
                         mainElement.appendChild(reservationIdElement);
-
+                    
                         const bookIdElement = document.createElement('p');
-                        bookIdElement.textContent = "Book ID: " + book_title;
+                        bookIdElement.textContent = "Book Title: " + book_title; // Display book title
                         bookIdElement.classList.add('book-id');
-                        mainElement.appendChild(bookIdElement);
-                        
+                        mainElement.appendChild(bookIdElement);                    
                     });
                 } else {
                     console.log('No reservation data available');

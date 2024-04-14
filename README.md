@@ -1,4 +1,4 @@
-# Group ID 56
+# Webtechnology Group ID 56
 Alexander Le, Jieni Ding, Liselot Ankone.
 ## http://webtech.science.uu.nl/group56
 
@@ -31,6 +31,22 @@ Sergey : test3
 yuh : yuh
 
 # The SQL definition of your database (the CREATE TABLE statements).
+CREATE TABLE statements
+``` SQLite
+CREATE TABLE user(
+user_id INTEGER (256) PRIMARY KEY AUTOINCREMENT,
+    password VARCHAR(30) NOT NULL,
+    first_name VARCHAR(256) NOT NULL,
+    last_name VARCHAR(256) NOT NULL,
+    address VARCHAR(256) NOT NULL,
+    postcode VARCHAR(6) NOT NULL,
+    telephone_number INTEGER(10) NOT NULL,
+    date_of_birth INTEGER(8) NOT NULL,
+    subscription_type VARCHAR(256) NOT NULL,
+    payment_method VARCHAR(256) NOT NULL
+);
+```
+
 ``` SQLite
 CREATE TABLE Book(
  Book_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,6 +57,18 @@ CREATE TABLE Book(
 );
 ```
 
+``` SQLite
+CREATE TABLE reservation(
+reservation_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    book_id INTEGER NOT NULL,
+    reservation_date INTEGER(8) NOT NULL,
+    CONSTRAINT userid_fk FOREIGN KEY(user_id) REFERENCES user(user_id),
+    CONSTRAINT bookid_fk FOREIGN KEY(book_id) REFERENCES book(book_id)
+);
+```
+
+INSERT INTO statements
 ``` SQLite
 INSERT INTO
     Book (title, author, content, image)
@@ -766,17 +794,6 @@ Now Essun must pursue the wreckage of her family through a deadly, dying land. W
 ```
 
 ``` SQLite
-CREATE TABLE reservation(
-reservation_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL,
-    book_id INTEGER NOT NULL,
-    reservation_date INTEGER(8) NOT NULL,
-    CONSTRAINT userid_fk FOREIGN KEY(user_id) REFERENCES user(user_id),
-    CONSTRAINT bookid_fk FOREIGN KEY(book_id) REFERENCES book(book_id)
-);
-```
-
-``` SQLite
 INSERT INTO
     reservation(user_id, book_id, reservation_date)
 VALUES
@@ -821,25 +838,24 @@ VALUES
 ```
 
 ``` SQLite
-CREATE TABLE user(
-user_id INTEGER (256) PRIMARY KEY AUTOINCREMENT,
-    password VARCHAR(30) NOT NULL,
-    first_name VARCHAR(256) NOT NULL,
-    last_name VARCHAR(256) NOT NULL,
-    address VARCHAR(256) NOT NULL,
-    postcode VARCHAR(6) NOT NULL,
-    telephone_number INTEGER(10) NOT NULL,
-    date_of_birth INTEGER(8) NOT NULL,
-    subscription_type VARCHAR(256) NOT NULL,
-    payment_method VARCHAR(256) NOT NULL
-);
-```
-
-``` SQLite
 INSERT INTO
     user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
 VALUES
-    (1,
+    (8,
+     'yuh',
+     'yuh',
+     'yuh',
+     'Utrecht',
+     '1234AF',
+     0600000004,
+     01012004,
+     'Staff',
+     'iDeal');
+    
+INSERT INTO
+    user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
+VALUES
+    (9,
      'test',
      'Alexander',
      'Le',
@@ -853,8 +869,8 @@ VALUES
 INSERT INTO
     user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
 VALUES
-    (2,
-     'test1',
+    (10,
+     'test',
      'Liselot',
      'Ankone',
      'Arnhem',
@@ -867,8 +883,8 @@ VALUES
 INSERT INTO
     user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
 VALUES
-    (3,
-     'test2',
+    (11,
+     'test',
      'Jieni',
      'Ding',
      'Almere',
@@ -881,7 +897,7 @@ VALUES
 INSERT INTO
     user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
 VALUES
-    (4,
+    (12,
      'test3',
      'Sergey',
      'Sergenov',
@@ -891,22 +907,4 @@ VALUES
      01012003,
      'Professor',
      'Visa');
-
-INSERT INTO
-    user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
-VALUES
-    (5,
-     'test4',
-     'Aditya',
-     'Joshi',
-     'Utrecht',
-     '1234AF',
-     0600000004,
-     01012004,
-     'Staff',
-     'iDeal');
-
-UPDATE user
-SET subscription_type = 'Student'
-WHERE user_id = 3;
 ```

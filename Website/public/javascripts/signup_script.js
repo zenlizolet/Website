@@ -1,3 +1,10 @@
+// This file, signup_script.js, is responsible for creating and handling the user signup process.
+// It creates a signup form with fields for the user's first name, last name, address, postcode, telephone number, date of birth, subscription type, payment method, and password.
+// When the form is submitted, it validates the input and sends a POST request to the '/api/signup' endpoint with the user's input.
+// If the signup is successful, it displays a success message.
+// If the signup fails, it displays an error message.
+// The signup form is created when the window loads.
+
 // Set the body id, used for styling
 document.body.setAttribute('id', 'signup__body');
 

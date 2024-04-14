@@ -14,7 +14,21 @@ user_id INTEGER (256) PRIMARY KEY AUTOINCREMENT,
 INSERT INTO
     user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
 VALUES
-    (1,
+    (8,
+     'yuh',
+     'yuh',
+     'yuh',
+     'Utrecht',
+     '1234AF',
+     0600000004,
+     01012004,
+     'Staff',
+     'iDeal');
+
+INSERT INTO
+    user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
+VALUES
+    (9,
      'test',
      'Alexander',
      'Le',
@@ -28,8 +42,8 @@ VALUES
 INSERT INTO
     user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
 VALUES
-    (2,
-     'test1',
+    (10,
+     'test',
      'Liselot',
      'Ankone',
      'Arnhem',
@@ -42,8 +56,8 @@ VALUES
 INSERT INTO
     user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
 VALUES
-    (3,
-     'test2',
+    (11,
+     'test',
      'Jieni',
      'Ding',
      'Almere',
@@ -56,7 +70,7 @@ VALUES
 INSERT INTO
     user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
 VALUES
-    (4,
+    (12,
      'test3',
      'Sergey',
      'Sergenov',
@@ -66,22 +80,4 @@ VALUES
      01012003,
      'Professor',
      'Visa');
-
-INSERT INTO
-    user (user_id, password, first_name, last_name, address, postcode, telephone_number, date_of_birth, subscription_type, payment_method)
-VALUES
-    (5,
-     'test4',
-     'Aditya',
-     'Joshi',
-     'Utrecht',
-     '1234AF',
-     0600000004,
-     01012004,
-     'Staff',
-     'iDeal');
-
-UPDATE user
-SET subscription_type = 'Student'
-WHERE user_id = 3;
 
