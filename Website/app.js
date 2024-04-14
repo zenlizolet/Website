@@ -248,11 +248,11 @@ app.post('/api/reserve', (req, res) => {
           return res.status(404).json({ error: err.message });
       }
 
-      const Book_id = row.Book_id;
-      console.log(Book_id);
+      const book_id = row.Book_id;
+      console.log(book_id);
 
       // Check if book already reserved
-      db.get('SELECT * FROM reservation WHERE book_id = ?', [Book_id], (err, row) => {
+      db.get('SELECT * FROM reservation WHERE book_id = ?', [book_id], (err, row) => {
           if (err) {
             console.log("hier3")
               return res.status(500).json({ error: err.message});
@@ -264,7 +264,7 @@ app.post('/api/reserve', (req, res) => {
           }
 
           // Insert new reservation
-          db.run('INSERT INTO reservation (user_id, book_id) VALUES (?, ?)', [user_id, Book_id], function (err) {
+          db.run('INSERT INTO reservation (user_id, book_id, reservation_date) VALUES (?, ?, 12345678)', [user_id, book_id], function (err) {
               if (err) {
                 console.log("womp womp");
                   return res.status(500).json({ error: err.message });
@@ -273,7 +273,7 @@ app.post('/api/reserve', (req, res) => {
               // Store reservation ID in the session if needed
               req.session.reservation_id = this.lastID;
 
-              return res.json({ success: true, message: 'Book reserved successfully', reservation: { id: this.lastID, Book_id: Book_id } });
+              return res.json({ success: true, message: 'Book reserved successfully', reservation: { id: this.lastID, book_id: book_id } });
           });
       });
   });
