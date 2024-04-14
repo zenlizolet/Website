@@ -1,3 +1,8 @@
+/**
+ * This file initializes the Express application and sets up various middleware and routes.
+ * It imports required modules such as 'http-errors', 'express', 'path', 'cookie-parser','morgan, and crypto'.
+ * It also establishes connections to the SQLite database and sets up session management.
+ */
 
 var createError = require('http-errors');
 var express = require('express');
@@ -21,11 +26,12 @@ var sequelsRouter = require('./routes/sequels.js');
 var settingRouter = require('./routes/setting.js');
 var signupRouter = require('./routes/signup.js');
 var reserveRouter = require('./routes/reserve.js');
-
+//set up express in the app variable
 var app = express();
 app.use(cookieParser());
 const { v4: uuidv4 } = require('uuid');
 
+//set up the session using the session middleware
 app.use(session({
   genid: function(req) {
     return uuidv4() // use UUIDs for session IDs
@@ -41,11 +47,13 @@ app.use(session({
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
+//set up the logger
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//define the routes and which router should be used
 app.use('/', indexRouter);
 app.use('/author', authorRouter);
 app.use('/catalog', catalogRouter);
@@ -58,11 +66,12 @@ app.use('/setting', settingRouter);
 app.use('/signup', signupRouter);
 app.use('/reserve', reserveRouter);
 
+//initialise the db
 let db = new sqlite3.Database('database/newidentifier.sqlite', sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
     console.error(err.message);
   }
-  else{
+  else{ //when the database is connected display this in the console
     console.log('Connected to the SQLite database.');
   }
 });
@@ -77,6 +86,7 @@ app.get('/users', (req, res) => {
   });
 });
 
+//this api selects and returns all the books from the Book table
 app.get('/api/books', (req, res) => {
   db.all('SELECT * FROM Book', [], (err, rows) => {
       if (err) {
@@ -102,14 +112,16 @@ app.post('/api/login', (req, res) => {
   // Hash the password
   const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
 
+  //select everything from the specified user
   db.get('SELECT * FROM user WHERE first_name = ?', [name], (err, row) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
-
+    //if the credentials dont match return a 401 error 
     if (!row || row.password !== hashedPassword) {
       return res.status(401).json({ error: 'Invalid username or password' });
     }
+    //log the user id and user name that just logged in
     console.log('User ID:', row.user_id);
     console.log('User name:', row.first_name);
 
@@ -121,7 +133,7 @@ app.post('/api/login', (req, res) => {
 
   });
 });
-
+//this api logs the current user out by destroying the session and it then redirects them to the login screen
 app.get('/logout', function(req, res) {
   req.session.destroy(function(err) {
       if (err) {
@@ -156,7 +168,7 @@ app.post('/api/signup', (req, res) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
-
+    //if the username already exists send an error
     if (row) {
       return res.status(400).json({ error: 'Username already taken' });
     }
@@ -175,31 +187,6 @@ app.post('/api/signup', (req, res) => {
   });
 });
 
-
-
-
-/** TODO DELETE THIS ROUTE THIS DELETES A USER FROM THE DATABASE, USED FOR THE HASHING VALUES TESTING
-*/
-app.get('/delete/:userId', (req, res) => {
-  const userId = req.params.userId;
-/** TODO DELETE THIS ROUTE THIS DELETES A USER FROM THE DATABASE, USED FOR THE HASHING VALUES TESTING
-*/
-  // Delete the user from the database
-  db.run('DELETE FROM user WHERE user_id = ?', [userId], function(err) {
-    if (err) {
-      return res.status(500).json({ error: err.message });
-    }
-/** TODO DELETE THIS ROUTE THIS DELETES A USER FROM THE DATABASE, USED FOR THE HASHING VALUES TESTING
-*/
-    // Check if any rows were affected
-    if (this.changes === 0) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-/** TODO DELETE THIS ROUTE THIS DELETES A USER FROM THE DATABASE, USED FOR THE HASHING VALUES TESTING
-*/
-    return res.json({ success: true, message: 'User deleted successfully' });
-  });
-});
 /** This API route returns the name of the current user from the session.
  It checks if there is a user ID in the session. If not, it returns an error.
  It retrieves the user from the database based on the user ID.
@@ -211,11 +198,9 @@ app.get('/api/current-user', (req, res) => {
     // If there's no user ID in the session, return undefined
     return res.json({ name: undefined});
   }
-  //TODO for the users page we might want to expand this, to include other user information
 
   // Get the user from the database 
   db.get('SELECT * FROM user WHERE user_id = ?', [req.session.userId], (err, row) => {
-    console.log("HALLLLLLOOOOOOOO");
     if (err) {
       console.log('Database error:', err.message);
       return res.status(500).json({ error: err.message });
@@ -238,35 +223,28 @@ app.post('/api/reserve', (req, res) => {
   // Retrieve the book ID based on the title
   db.get('SELECT Book_id FROM Book WHERE title = ?', [title], (err, row) => {
       if (err) {
-        console.log("hier1")
           return res.status(500).json({ error: err.message });
-          
       }
 
       if (!row) {
-        console.log("hier2")
           return res.status(404).json({ error: err.message });
       }
-
+      //set a local bookid variable that stores the specified book in the database
       const book_id = row.Book_id;
-      console.log(book_id);
 
       // Check if book already reserved
       db.get('SELECT * FROM reservation WHERE book_id = ?', [book_id], (err, row) => {
           if (err) {
-            console.log("hier3")
               return res.status(500).json({ error: err.message});
           }
-
+          //if it already exists it is already reserved, return an error
           if (row) {
-            console.log("hier4")
               return res.status(404).json({ error: 'book already taken' });
           }
 
           // Insert new reservation
           db.run('INSERT INTO reservation (user_id, book_id, reservation_date) VALUES (?, ?, 12345678)', [user_id, book_id], function (err) {
               if (err) {
-                console.log("womp womp");
                   return res.status(500).json({ error: err.message });
               }
 
