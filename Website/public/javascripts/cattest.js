@@ -95,21 +95,20 @@ async function displayBooks(){
                         body: JSON.stringify(requestBody)
                     });
 
-                   // const data = await response.json();
-
                     if (!response.ok) {
                         throw new Error('failed to reserve the book. please try again later.');
                     }
-        
+
                     alert('Reserved!');
 
-                    } catch (error) {
-                      console.error('Error:', error);
-                      alert('already reserved :(')
+                } catch (error) {
+                    console.error('Error:', error);
+                    if (user_id === undefined || user_id === null) {
+                        alert('You need to log in to reserve a book.');
+                    } else {
+                        alert('already reserved :(');
                     }
-
-               // window.location.href = '../public/reserve.html?book=' + book.title;
-
+                }
             }
             else {
                 console.log('Operation cancelled');
@@ -156,9 +155,42 @@ function createModal(book) {
 
     const reserveButton = document.createElement('button');
     reserveButton.textContent = 'Reserve';
-    reserveButton.addEventListener('click', () => {
+    reserveButton.addEventListener('click', async function(event) {
+        event.preventDefault();
+
         if (confirm(`Reserve this book: ${book.title}`)) {
-            window.location.href = '../public/reserve.html?book=' + encodeURIComponent(book.title);
+            // check if user is logged in PLACED HERE
+            const user_id = user.user_id
+            const title = book.title;
+
+            const requestBody = {
+                user_id: user_id,
+                title: title
+            };
+
+            try {
+                const response = await fetch('api/reserve', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+
+                if (!response.ok) {
+                    throw new Error('failed to reserve the book. please try again later.');
+                }
+
+                alert('Reserved!');
+
+            } catch (error) {
+                console.error('Error:', error);
+                if (user_id === undefined || user_id === null) {
+                    alert('You need to log in to reserve a book.');
+                } else {
+                    alert('already reserved :(');
+                }
+            }
         }
         else {
             console.log('Operation cancelled');
