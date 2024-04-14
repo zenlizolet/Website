@@ -238,13 +238,13 @@ app.post('/api/reserve', (req, res) => {
   // Retrieve the book ID based on the title
   db.get('SELECT Book_id FROM Book WHERE title = ?', [title], (err, row) => {
       if (err) {
-        console.log('hier1')
+        console.log("hier1")
           return res.status(500).json({ error: err.message });
           
       }
 
       if (!row) {
-        console.log('hier2')
+        console.log("hier2")
           return res.status(404).json({ error: err.message });
       }
 
@@ -254,19 +254,20 @@ app.post('/api/reserve', (req, res) => {
       // Check if book already reserved
       db.get('SELECT * FROM reservation WHERE book_id = ?', [Book_id], (err, row) => {
           if (err) {
-            console.log('hier3')
+            console.log("hier3")
               return res.status(500).json({ error: err.message});
           }
 
           if (row) {
-            console.log('hier4')
+            console.log("hier4")
               return res.status(400).json({ error: err.message });
           }
 
           // Insert new reservation
           db.run('INSERT INTO reservation (user_id, book_id) VALUES (?, ?)', [user_id, Book_id], function (err) {
               if (err) {
-                  return res.status(500).json({ error: 'Failed to reserve the er' });
+                console.log("womp womp");
+                  return res.status(500).json({ error: err.message });
               }
 
               // Store reservation ID in the session if needed
