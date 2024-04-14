@@ -47,17 +47,14 @@ async function loginUser() {
     loginForm.addEventListener('submit', async function(event) {
         event.preventDefault();
 
-        // Get form data
         const name = nameInput.value;
         const password = passwordInput.value;
 
-        // Create request body
         const requestBody = {
             name: name,
             password: password
         };
 
-        // Make POST request to the server
         try {
             const response = await fetch('api/login', {
                 method: 'POST',
@@ -70,21 +67,19 @@ async function loginUser() {
             const data = await response.json();
 
             if (data.success) {
-                // Login was successful
                 sessionStorage.setItem('user', JSON.stringify(data.user));
-                // Add the new element to the top of the body
 
                 loginStatus.textContent = `Logged in as ${data.user.name}`;
                 var oldNavBar = document.querySelector('nav');
                 oldNavBar.parentNode.removeChild(oldNavBar);
                 createNavBar();
+
+                window.location.href = 'user.html';
             } else {
-               // Login failed
                 const errorMessage = document.createElement('p');
                 errorMessage.textContent = 'Login failed: ' + data.error;
                 errorMessage.setAttribute('class', 'error-message');
 
-                // Add the error message to the top of the body
                 loginStatus.textContent = 'current login status: '+ data.error ;
             }
         } catch (error) {

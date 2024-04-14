@@ -20,6 +20,7 @@ var reviewsRouter = require('./routes/reviews.js');
 var sequelsRouter = require('./routes/sequels.js');
 var settingRouter = require('./routes/setting.js');
 var signupRouter = require('./routes/signup.js');
+var reserveRouter = require('./routes/reserve.js');
 
 var app = express();
 app.use(cookieParser());
@@ -55,6 +56,7 @@ app.use('/reviews', reviewsRouter);
 app.use('/sequels', sequelsRouter);
 app.use('/setting', settingRouter);
 app.use('/signup', signupRouter);
+app.use('/reserve', reserveRouter);
 
 let db = new sqlite3.Database('database/newidentifier.sqlite', sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
@@ -175,6 +177,7 @@ app.post('/api/signup', (req, res) => {
 
 
 
+
 /** TODO DELETE THIS ROUTE THIS DELETES A USER FROM THE DATABASE, USED FOR THE HASHING VALUES TESTING
 */
 app.get('/delete/:userId', (req, res) => {
@@ -228,6 +231,54 @@ app.get('/api/current-user', (req, res) => {
   });
 });
 
+//reservation
+app.post('/api/reserve', (req, res) => {
+  const { user_id, title} = req.body;
+
+  // Retrieve the book ID based on the title
+  db.get('SELECT Book_id FROM Book WHERE title = ?', [title], (err, row) => {
+      if (err) {
+        console.log("hier1")
+          return res.status(500).json({ error: err.message });
+          
+      }
+
+      if (!row) {
+        console.log("hier2")
+          return res.status(404).json({ error: err.message });
+      }
+
+      const book_id = row.Book_id;
+      console.log(book_id);
+
+      // Check if book already reserved
+      db.get('SELECT * FROM reservation WHERE book_id = ?', [book_id], (err, row) => {
+          if (err) {
+            console.log("hier3")
+              return res.status(500).json({ error: err.message});
+          }
+
+          if (row) {
+            console.log("hier4")
+              return res.status(400).json({ error: err.message });
+          }
+
+          // Insert new reservation
+          db.run('INSERT INTO reservation (user_id, book_id, reservation_date) VALUES (?, ?, 12345678)', [user_id, book_id], function (err) {
+              if (err) {
+                console.log("womp womp");
+                  return res.status(500).json({ error: err.message });
+              }
+
+              // Store reservation ID in the session if needed
+              req.session.reservation_id = this.lastID;
+
+              return res.json({ success: true, message: 'Book reserved successfully', reservation: { id: this.lastID, book_id: book_id } });
+          });
+      });
+  });
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -244,4 +295,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//db.close();
 module.exports = app;
