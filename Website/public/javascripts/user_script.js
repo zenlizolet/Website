@@ -2,7 +2,7 @@
 document.body.setAttribute('id', "user__body");
 let mainElement = document.querySelector('main');
 
-
+/*this is the script for the user page. It displays the information and their reservations*/
 
 // Fetch user info from the API
 fetch('/api/current-user')
