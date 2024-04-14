@@ -6,5 +6,10 @@
 # A brief explanation of your web-site, the structure of your application, including every content file and every code file, the structure of your database.
 
 # Logins and passwords of all registered users.
+Username : Password
+Alexander : test
+Liselot : test
+Jieni : test
+yuh : yuh
 
 # The SQL definition of your database (the CREATE TABLE statements).
