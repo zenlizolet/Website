@@ -1,3 +1,11 @@
+// This file, login_script.js, is responsible for handling the user login process.
+// It creates a login form with fields for the user's name and password.
+// When the form is submitted, it sends a POST request to the '/api/login' endpoint with the user's input.
+// If the login is successful, it stores the user's information in the session storage and redirects the user to the 'user.html' page.
+// If the login fails, it displays an error message to the user.
+// The login form is created when the window loads.
+// If the URL includes a 'book' parameter, it alerts the user to log in to reserve the specified book.
+
 // Set the body id, used for styling
 document.body.setAttribute('id', 'login__body');
 

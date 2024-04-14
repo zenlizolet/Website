@@ -1,4 +1,10 @@
-// This file is responsible for fetching and displaying the current user's information and reservation data.
+// This file, user_script.js, is responsible for fetching and displaying the current user's information and reservation data.
+// It fetches the user's information from the '/api/current-user' endpoint and displays it on the page.
+// The user's information includes their user ID, name, address, postcode, telephone number, date of birth, subscription type, payment method, and username.
+// It also fetches the user's reservation data from the '/api/reserve' endpoint and displays the reservation ID and book ID.
+// If there is an error during the fetch requests, it logs the error to the console.
+// The user's information and reservation data are fetched and displayed when the window loads.
+
 //set the body id, used for styling
 document.body.setAttribute('id', "user__body");
 let mainElement = document.querySelector('main');

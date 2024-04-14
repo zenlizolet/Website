@@ -1,3 +1,11 @@
+// This file, cattest.js, is responsible for fetching and displaying a list of books from the server.
+// It also provides functionality for reserving a book and navigating through the book catalog.
+// The book data is fetched from the '/api/books' endpoint and displayed in a grid format.
+// Each book has an associated image, title, and summary.
+// Users can click on a book to view more information in a modal.
+// If a user is logged in, they can reserve a book.
+// The catalog also includes navigation buttons to move between pages of books.
+
 console.log("Catalog.js loaded");
 // Set the body id, used for styling
 document.body.setAttribute('id', 'catalog__body');

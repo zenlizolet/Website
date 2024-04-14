@@ -1,3 +1,10 @@
+// This file, script.js, is responsible for creating the navigation bar and footer for the website.
+// It also handles the loading of different pages based on the URL.
+// The navigation bar includes links to different pages such as 'Homepage', 'Author', 'Reviews', 'Setting', 'Houses', 'Sequels', and 'Dynamic Page'.
+// The footer includes options to change the font size and color of elements on the page.
+// The navigation bar and footer are created when the window loads.
+// The file also includes a function to create a menu with all the different elements on the page and functions to change the color or font of a selected section.
+
 // This function will run when the page loads
 window.onload = function () {
     

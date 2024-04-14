@@ -1,3 +1,9 @@
+// This file, reserve_script.js, is responsible for handling the book reservation process.
+// It fetches the current reservation details from the '/api/current-reservation' endpoint and the corresponding book details from the '/api/books/{book_id}' endpoint.
+// It then displays the book title, reservation date, book summary, and book image on the page.
+// If there is an error during the fetch requests, it logs the error to the console.
+// The reservation details are fetched and displayed when the window loads.
+
 //set the body id, used for styling
 document.body.setAttribute('id', "book_body");
 let mainElement = document.querySelector('main');
