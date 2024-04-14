@@ -98,14 +98,14 @@ async function displayBooks(){
                    // const data = await response.json();
 
                     if (!response.ok) {
-                        throw new Error('Failed to reserve the book cattest');
+                        throw new Error('failed to reserve the book. please try again later.');
                     }
         
                     alert('Reserved!');
 
                     } catch (error) {
                       console.error('Error:', error);
-                      alert('failed to reserve the book. please try again later.')
+                      alert('already reserved :(')
                     }
 
                // window.location.href = '../public/reserve.html?book=' + book.title;
