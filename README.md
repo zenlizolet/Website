@@ -8,10 +8,15 @@ Library catalog.
 
 # Logins and passwords of all registered users.
 Username : Password
+
 Alexander : test
+
 Liselot : test
+
 Jieni : test
+
 Sergey : test3
+
 yuh : yuh
 
 # The SQL definition of your database (the CREATE TABLE statements).
