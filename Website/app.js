@@ -175,47 +175,6 @@ app.post('/api/signup', (req, res) => {
   });
 });
 
-//reservation
-app.post('/api/reserve', (req, res) => {
-  const { user_id, title} = req.body;
-
-  // Retrieve the book ID based on the title
-  db.get('SELECT book_id FROM Book WHERE title = ?', [title], (err, row) => {
-      if (err) {
-          return res.status(500).json({ error: 'no title' });
-      }
-
-      if (!row) {
-          return res.status(404).json({ error: 'Book not found' });
-      }
-
-      const book_id = row.book_id;
-      console.log(book_id);
-
-      // Check if book already reserved
-      db.get('SELECT * FROM reservation WHERE book_id = ?', [book_id], (err, row) => {
-          if (err) {
-              return res.status(500).json({ error: 'book not bookid not found'});
-          }
-
-          if (row) {
-              return res.status(400).json({ error: 'Book already reserved' });
-          }
-
-          // Insert new reservation
-          db.run('INSERT INTO reservation (user_id, book_id) VALUES (?, ?)', [user_id, book_id], function (err) {
-              if (err) {
-                  return res.status(500).json({ error: 'Failed to reserve the er' });
-              }
-
-              // Store reservation ID in the session if needed
-              req.session.reservation_id = this.lastID;
-
-              return res.json({ success: true, message: 'Book reserved successfully', reservation: { id: this.lastID, book_id: book_id } });
-          });
-      });
-  });
-});
 
 
 
@@ -269,6 +228,53 @@ app.get('/api/current-user', (req, res) => {
     // Return just the user's name since that is the only thing we need right now
     return res.json({user_id:row.user_id, name: row.first_name, last_name: row.last_name,address:row.address,postcode:row.postcode,telephone_number:row.telephone_number,date_of_birth: row.date_of_birth,subscription_type:row.subscription_type,payment_method:row.payment_method });
     
+  });
+});
+
+//reservation
+app.post('/api/reserve', (req, res) => {
+  const { user_id, title} = req.body;
+
+  // Retrieve the book ID based on the title
+  db.get('SELECT Book_id FROM Book WHERE title = ?', [title], (err, row) => {
+      if (err) {
+        console.log('hier1')
+          return res.status(500).json({ error: err.message });
+          
+      }
+
+      if (!row) {
+        console.log('hier2')
+          return res.status(404).json({ error: err.message });
+      }
+
+      const Book_id = row.Book_id;
+      console.log(Book_id);
+
+      // Check if book already reserved
+      db.get('SELECT * FROM reservation WHERE book_id = ?', [Book_id], (err, row) => {
+          if (err) {
+            console.log('hier3')
+              return res.status(500).json({ error: err.message});
+          }
+
+          if (row) {
+            console.log('hier4')
+              return res.status(400).json({ error: err.message });
+          }
+
+          // Insert new reservation
+          db.run('INSERT INTO reservation (user_id, book_id) VALUES (?, ?)', [user_id, Book_id], function (err) {
+              if (err) {
+                  return res.status(500).json({ error: 'Failed to reserve the er' });
+              }
+
+              // Store reservation ID in the session if needed
+              req.session.reservation_id = this.lastID;
+
+              return res.json({ success: true, message: 'Book reserved successfully', reservation: { id: this.lastID, Book_id: Book_id } });
+          });
+      });
   });
 });
 
