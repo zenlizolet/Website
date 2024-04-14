@@ -3,7 +3,7 @@ document.body.setAttribute('id', "book_body");
 let mainElement = document.querySelector('main');
 
 // Fetch user info from the API
-fetch('/api/reserve')
+fetch('/api/current-reservation')
     .then(response => response.json())
     .then(reservation => {
         console.log(reservation);
@@ -12,9 +12,9 @@ fetch('/api/reserve')
 
         fetch(`/api/books/${book_id}`)
             .then(book => {
-                console.log(book)
+                console.log(book)   
                 var book_title = book.title;
-                var book_summary = book.content;// klopt absoluut niet
+                var book_summary = book.content;
                 var book_image = book.image;
 
 
@@ -29,11 +29,11 @@ fetch('/api/reserve')
                 reservationElement.textContent = "Yay! your reservation on" + reservation_date + " for book:" + book_title + ", has been made!";
 
                 const summaryElement = document.createElement('p');
-                summaryElement.textContent = "Summary: " + book_summary; // dit klopt niet
+                summaryElement.textContent = "Summary: " + book_summary; 
                 mainElement.appendChild(summaryElement);
 
                 const imageElement = document.createElement('img');
-                imageElement.setAttribute('src', book_image);// dit klopt niet
+                imageElement.setAttribute('src', book_image);
                 imageElement.style.width = '45%';
                 mainElement.appendChild(imageElement);
 

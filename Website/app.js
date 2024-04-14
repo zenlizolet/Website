@@ -20,6 +20,7 @@ var reviewsRouter = require('./routes/reviews.js');
 var sequelsRouter = require('./routes/sequels.js');
 var settingRouter = require('./routes/setting.js');
 var signupRouter = require('./routes/signup.js');
+var reserveRouter = require('./routes/reserve.js');
 
 var app = express();
 app.use(cookieParser());
@@ -55,6 +56,7 @@ app.use('/reviews', reviewsRouter);
 app.use('/sequels', sequelsRouter);
 app.use('/setting', settingRouter);
 app.use('/signup', signupRouter);
+app.use('/reserve', reserveRouter);
 
 let db = new sqlite3.Database('database/newidentifier.sqlite', sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
@@ -173,30 +175,45 @@ app.post('/api/signup', (req, res) => {
   });
 });
 
+//reservation
 app.post('/api/reserve', (req, res) => {
-  const { user_id, book_id, reservation_date} = req.body;
+  const { user_id, title} = req.body;
 
-  // Check if book already reserved
-  db.get('SELECT * FROM reservation WHERE book_id = ?', [book_id], (err, row) => {
-    if (err) {
-      return res.status(500).json({ error: err.message });
-    }
-
-    if (row) {
-      return res.status(400).json({ error: 'book already taken reserved' });
-    }
-
-    // Insert new user
-    db.run('INSERT INTO reservation (user_id, book_id, reservation_date) VALUES (?, ?, ?)', [ user_id, book_id, reservation_date], function(err) {
+  // Retrieve the book ID based on the title
+  db.get('SELECT book_id FROM Book WHERE title = ?', [title], (err, row) => {
       if (err) {
-        return res.status(500).json({ error: err.message });
+          return res.status(500).json({ error: 'no title' });
       }
 
-      // Store user's ID in the session
-      req.session.reservation_id = this.lastID;
+      if (!row) {
+          return res.status(404).json({ error: 'Book not found' });
+      }
 
-      return res.json({ success: true, message: 'Reserved!', book: { id: this.lastID, name: book_title } });
-    });
+      const book_id = row.book_id;
+      console.log(book_id);
+
+      // Check if book already reserved
+      db.get('SELECT * FROM reservation WHERE book_id = ?', [book_id], (err, row) => {
+          if (err) {
+              return res.status(500).json({ error: 'book not bookid not found'});
+          }
+
+          if (row) {
+              return res.status(400).json({ error: 'Book already reserved' });
+          }
+
+          // Insert new reservation
+          db.run('INSERT INTO reservation (user_id, book_id) VALUES (?, ?)', [user_id, book_id], function (err) {
+              if (err) {
+                  return res.status(500).json({ error: 'Failed to reserve the er' });
+              }
+
+              // Store reservation ID in the session if needed
+              req.session.reservation_id = this.lastID;
+
+              return res.json({ success: true, message: 'Book reserved successfully', reservation: { id: this.lastID, book_id: book_id } });
+          });
+      });
   });
 });
 
@@ -271,4 +288,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//db.close();
 module.exports = app;

@@ -37,8 +37,21 @@ async function fetchBooks() {
     }
 }
 
+async function fetchUserId() {
+    try {
+        const response = await fetch('/api/current-user');
+        const user = await response.json();
+        console.log(user);
+        return user;
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+        return [];
+    }
+}
+
 async function displayBooks(){
     books = await fetchBooks();
+    user = await fetchUserId();
     book__container.innerHTML = "";
     for (let i = pageIndex; i < Math.min(pageIndex + booksPerPage, books.length); i++) {
         const book = books[i];
@@ -59,12 +72,46 @@ async function displayBooks(){
         summary.classList.add('summary');
         bookDiv.appendChild(summary);
 
+
         const reserveButton = document.createElement('button');
         reserveButton.textContent = 'Reserve';
-        reserveButton.addEventListener('click', () => {
+        reserveButton.addEventListener('click', async function(event) {
+            event.preventDefault();
+
             if (confirm(`Reserve this book: ${book.title}`)) {
                 // check if user is logged in PLACED HERE
-                window.location.href = '../public/reserve.html?book=' + encodeURIComponent(book.title);
+                const user_id = user.user_id
+                const title = book.title;
+
+                const requestBody = {
+                    user_id: user_id,
+                    title: title
+                };
+
+                try {
+                    const response = await fetch('api/reserve', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(requestBody)
+                    });
+
+                   // const data = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error('Failed to reserve the book cattest');
+                    }
+        
+                    alert('Reserved!');
+
+                    } catch (error) {
+                      console.error('Error:', error);
+                      alert('failed to reserve the book. please try again later.')
+                    }
+
+               // window.location.href = '../public/reserve.html?book=' + book.title;
+
             }
             else {
                 console.log('Operation cancelled');
