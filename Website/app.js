@@ -88,6 +88,7 @@ app.get('/api/books', (req, res) => {
 });
 
 
+
 /**
 The /api/login route extracts the name and password from the request body.
 It queries the database for a user with the provided name.
@@ -276,6 +277,36 @@ app.post('/api/reserve', (req, res) => {
               return res.json({ success: true, message: 'Book reserved successfully', reservation: { id: this.lastID, book_id: book_id } });
           });
       });
+  });
+});
+
+app.get('/api/user-reservations', (req, res) => {
+  if (!req.session.userId) {
+    // If there's no user ID in the session, return undefined
+    return res.json({ name: undefined });
+  }
+
+  // Get the user's reservations including book titles
+  const sql = `
+    SELECT reservation.reservation_id, reservation.book_id, book.title
+    FROM reservation
+    JOIN book ON reservation.book_id = book.book_id
+    WHERE reservation.user_id = ?`;
+
+  db.all(sql, [req.session.userId], (err, rows) => {
+    if (err) {
+      console.log('Database error:', err.message);
+      return res.status(500).json({ error: 'Database error' });
+    }
+
+    if (!rows || rows.length === 0) {
+      // If there are no reservations for the user, return an empty array
+      return res.json([]);
+    }
+
+    // Return reservations with book titles
+    console.log(rows);
+    return res.json(rows);
   });
 });
 
