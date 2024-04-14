@@ -32,12 +32,38 @@ yuh : yuh
 
 # The SQL definition of your database (the CREATE TABLE statements).
 ``` SQLite
+CREATE TABLE user(
+user_id INTEGER (256) PRIMARY KEY AUTOINCREMENT,
+    password VARCHAR(30) NOT NULL,
+    first_name VARCHAR(256) NOT NULL,
+    last_name VARCHAR(256) NOT NULL,
+    address VARCHAR(256) NOT NULL,
+    postcode VARCHAR(6) NOT NULL,
+    telephone_number INTEGER(10) NOT NULL,
+    date_of_birth INTEGER(8) NOT NULL,
+    subscription_type VARCHAR(256) NOT NULL,
+    payment_method VARCHAR(256) NOT NULL
+);
+```
+
+``` SQLite
 CREATE TABLE Book(
  Book_id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(256) NOT NULL,
     author VARCHAR(256) NOT NULL,
     content TEXT NOT NULL,
     image VARCHAR(256) NOT NULL
+);
+```
+
+``` SQLite
+CREATE TABLE reservation(
+reservation_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    book_id INTEGER NOT NULL,
+    reservation_date INTEGER(8) NOT NULL,
+    CONSTRAINT userid_fk FOREIGN KEY(user_id) REFERENCES user(user_id),
+    CONSTRAINT bookid_fk FOREIGN KEY(book_id) REFERENCES book(book_id)
 );
 ```
 
@@ -766,17 +792,6 @@ Now Essun must pursue the wreckage of her family through a deadly, dying land. W
 ```
 
 ``` SQLite
-CREATE TABLE reservation(
-reservation_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL,
-    book_id INTEGER NOT NULL,
-    reservation_date INTEGER(8) NOT NULL,
-    CONSTRAINT userid_fk FOREIGN KEY(user_id) REFERENCES user(user_id),
-    CONSTRAINT bookid_fk FOREIGN KEY(book_id) REFERENCES book(book_id)
-);
-```
-
-``` SQLite
 INSERT INTO
     reservation(user_id, book_id, reservation_date)
 VALUES
@@ -818,21 +833,6 @@ VALUES
 (3,
  21,
  01012001);
-```
-
-``` SQLite
-CREATE TABLE user(
-user_id INTEGER (256) PRIMARY KEY AUTOINCREMENT,
-    password VARCHAR(30) NOT NULL,
-    first_name VARCHAR(256) NOT NULL,
-    last_name VARCHAR(256) NOT NULL,
-    address VARCHAR(256) NOT NULL,
-    postcode VARCHAR(6) NOT NULL,
-    telephone_number INTEGER(10) NOT NULL,
-    date_of_birth INTEGER(8) NOT NULL,
-    subscription_type VARCHAR(256) NOT NULL,
-    payment_method VARCHAR(256) NOT NULL
-);
 ```
 
 ``` SQLite
