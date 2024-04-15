@@ -14,10 +14,9 @@ const crypto = require('crypto');
 
 const session = require('express-session');
 
-//set up different routers for each page
+//set up different routers for each page.
 var indexRouter = require('./routes/index.js');
 var authorRouter = require('./routes/author.js');
-var catalogRouter = require('./routes/catalog.js');
 var housesRouter = require('./routes/houses.js');
 var infoRouter = require('./routes/info.js');
 var loginRouter = require('./routes/login.js');
@@ -56,7 +55,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //define the routes and which router should be used
 app.use('/', indexRouter);
 app.use('/author', authorRouter);
-app.use('/catalog', catalogRouter);
 app.use('/houses', housesRouter);
 app.use('/info', infoRouter);
 app.use('/login', loginRouter);

@@ -37,7 +37,7 @@ function createNav(pages, links, div ,ulClass) {
 function createNavLeft() {
     var div = document.createElement('div');
     div.id = 'nav--left';
-    var pages = ['Homepage', 'Author', 'Reviews', 'Setting', 'Houses', 'Sequels', 'Dynamic Page'];
+    var pages = ['GOTBooks Library', 'Author', 'Reviews', 'Setting', 'Houses', 'Sequels', 'Dynamic Page'];
     var links = ['/', 'author', 'reviews', 'setting', 'houses', 'sequels', 'info'];
     return createNav(pages, links,div, 'nav-left');
 }
@@ -46,8 +46,8 @@ function createNavRight() {
     return new Promise((resolve, reject) => {
         var div = document.createElement('div');
         div.id = 'nav--right';
-        var pages = ['Catalog'];
-        var links = ['catalog.html'];
+        var pages = [];
+        var links = [];
 
         var xhr = new XMLHttpRequest();
 
@@ -58,8 +58,8 @@ function createNavRight() {
                 var data = JSON.parse(this.response);
 
                 // Create an array of page names and links
-                pages = ['Catalog'];
-                links = ['catalog.html'];
+                pages = [];
+                links = [];
 
                 if (data && data.name !== undefined) {
                     pages.push('Log out');

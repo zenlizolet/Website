@@ -101,21 +101,31 @@ fetch('/api/current-user')
                 console.log('Reservations:', reservations);
 
                 if (reservations && reservations.length > 0) {
-
-
                     reservations.forEach(reservation => {
                         var reservation_id = reservation.reservation_id;
                         var book_title = reservation.title; // Access the book_title property
-                    
+
                         const reservationIdElement = document.createElement('p');
                         reservationIdElement.textContent = "Reservation ID: " + reservation_id;
                         reservationIdElement.classList.add('reservation-id');
                         mainElement.appendChild(reservationIdElement);
-                    
+
                         const bookIdElement = document.createElement('p');
                         bookIdElement.textContent = "Book Title: " + book_title; // Display book title
                         bookIdElement.classList.add('book-id');
-                        mainElement.appendChild(bookIdElement);                    
+                        mainElement.appendChild(bookIdElement);
+
+                        // Create the "Cancel Reservation" button
+                        var cancelButton = document.createElement('button');
+                        cancelButton.textContent = 'Cancel Reservation';
+                        cancelButton.classList.add('cancel-reservation'); // Add class
+                        cancelButton.addEventListener('click', function() {
+                            var confirmCancel = confirm('Are you sure you want to cancel this reservation?');
+                            if (confirmCancel) {
+                                cancelReservation(reservation_id);
+                            }
+                        });
+                        mainElement.appendChild(cancelButton);
                     });
                 } else {
                     console.log('No reservation data available');
@@ -128,3 +138,26 @@ fetch('/api/current-user')
     .catch(error => {
         console.error('Error fetching user info:', error);
     });
+
+function cancelReservation(reservation_id) {
+    fetch('api/user-reservations' + reservation_id, {
+        method: 'DELETE',
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                alert('Reservation cancelled successfully');
+            } else {
+                alert('Failed to cancel reservation: ' + data.message);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Failed to cancel reservation. Please try again later.');
+        });
+}

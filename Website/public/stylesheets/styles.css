@@ -555,56 +555,11 @@ h1.catalog__title{
   width: 150px;
   height: 200px;
 }
+
 .summary {
   display: none;
 }
 
-/*css for the userpage*/
-#user__body{
-  background-image: url('../images/field.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center; 
-  background-attachment: fixed;
-}
-
-.full-name {
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-.filler-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.user-id {
-  font-size: 1.5rem;
-}
-
-.security-text{
-  font-size: 1.2rem;
-  font-style: italic;
-}
-
-.user-credentials {
-  word-break: break-all;
-}
-
-/*css for the errorpage*/
-#error__body{
-  background-image: url(../images/trees.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center; 
-  background-attachment: fixed;
-}
-
-#explosion{
-  width:100%;
-  height:auto;
-
-}
 
 .modal {
   display: none;
@@ -645,6 +600,55 @@ h1.catalog__title{
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+/*css for the userpage*/
+#user__body{
+  background-image: url('../images/field.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
+  background-attachment: fixed;
+}
+
+.full-name {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.filler-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.user-id {
+  font-size: 1.5rem;
+}
+
+.security-text{
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.user-credentials {
+  word-break: break-all;
+}
+
+button.cancel-reservation {
+  margin-left:45px;
+}
+/*css for the errorpage*/
+#error__body{
+  background-image: url(../images/trees.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
+  background-attachment: fixed;
+}
+
+#explosion{
+  width:100%;
+  height:auto;
 }
 /* Responsive css */
 
