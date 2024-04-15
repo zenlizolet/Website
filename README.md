@@ -16,6 +16,8 @@ Website is inside Website map, so run cd Website. Then npm start, to get start t
 
 Images are a bit low quality, but that does not really matter.
 
+There is only 1 copy of each book. We are a start-up library.
+
 Database contains user, book and reservation info, on catalog page everything is pulled from there and there is a  check if the user is logged in or not, and reservations are added in the database, as well as new accounts. 
 # Logins and passwords of all registered users.
 Username : Password
